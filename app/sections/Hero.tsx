@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Download, Github, Linkedin, Mail, Phone, MapPin, ChevronDown } from "lucide-react"
-import { personalInfo } from "@/lib/data"
+import { experienceStartYear, personalInfo } from "@/lib/data"
 import Image from "next/image"
 
 export default function Hero() {
@@ -136,7 +136,7 @@ export default function Hero() {
                 <Image src="/images/profile.png" alt={personalInfo.name} fill className="object-cover" priority sizes="(max-width: 640px) 224px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px" />
               </div>
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity }} className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-blue-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                8+ Years
+                {new Date().getFullYear() - experienceStartYear}+ Years
               </motion.div>
               <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 1 }} className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
                 Team Leader

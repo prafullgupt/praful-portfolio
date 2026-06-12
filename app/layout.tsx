@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     description: "8+ years of experience building world-class mobile and web applications",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: '/images/logo.png', type: 'image/png' },
+    ]
+  },
 }
 
 export default function RootLayout({

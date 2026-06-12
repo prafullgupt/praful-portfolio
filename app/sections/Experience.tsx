@@ -22,9 +22,31 @@ export default function Experience() {
           <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500" />
 
           {experiences.map((exp, index) => (
-            <motion.div key={exp.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="relative flex items-start mb-8 sm:mb-10">
-              <div className="absolute left-4 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-blue-600 rounded-full border-2 sm:border-4 border-white shadow-lg md:-translate-x-2 mt-5 sm:mt-6 z-10" />
-              <div className="ml-10 sm:ml-12 md:ml-0 md:w-5/12 w-full">
+            <motion.div
+              key={exp.id}
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              className="relative flex items-start mb-10"
+            >
+              <div className="absolute left-4 md:left-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-blue-600 rounded-full border-2 sm:border-4 border-white shadow-lg md:-translate-x-1/2 mt-5 sm:mt-6 z-10" />
+              <div
+                className={`ml-10 sm:ml-12 md:ml-0 md:w-[46%] w-full ${index % 2 === 0
+                    ? "md:mr-auto"
+                    : "md:ml-auto"
+                  }`}
+
+              >
                 <motion.div whileHover={{ scale: 1.01 }} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow border border-gray-100">
                   <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">

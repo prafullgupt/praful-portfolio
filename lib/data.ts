@@ -1,14 +1,16 @@
+export const experienceStartYear = 2018 ;
+
 export const personalInfo = {
   name: "Praful Gupta",
-  title: "Team Leader (Senior Application Developer)",
-  tagline: "Building Scalable Mobile & Web Solutions with 8+ Years of Experience",
+  title: "Team Leader (Senior Application & Web Developer)",
+  tagline: `Building Scalable Mobile & Web Solutions with ${new Date().getFullYear() - experienceStartYear}+ Years of Experience`,
   email: "prafullgoel7@gmail.com",
   phone: "+91-8057381969",
   phone2: "+91-7417319939",
   location: "Mohalla Kishor Kan, Sardhana, Meerut (UP) - 250342",
   linkedin: "https://linkedin.com/in/prafull-gupto-958633169",
   github: "https://github.com/prafullgupt",
-  about: `Dedicated and results-oriented Mobile Application Developer with over 8 years of experience in software engineering. Currently serving as a Team Leader and React Native Developer at Harshit Infosolutions Pvt. Ltd. Proven track record in the complete software development life cycle, with expertise in development, release, and maintenance. Additionally skilled in integrating AI (Artificial Intelligence) solutions into mobile applications to enhance user experience and performance. Possess excellent communication skills, self-motivation, and strong organizational abilities, along with leadership capabilities. A highly effective team player, consistently contributing to the achievement of project goals.`,
+  about: `Dedicated and results-oriented Mobile Application Developer with over ${new Date().getFullYear() - experienceStartYear}+ years of experience in software engineering. Currently serving as a Team Leader and React Native Developer at Harshit Infosolutions Pvt. Ltd. Proven track record in the complete software development life cycle, with expertise in development, release, and maintenance. Additionally skilled in integrating AI (Artificial Intelligence) solutions into mobile applications to enhance user experience and performance. Possess excellent communication skills, self-motivation, and strong organizational abilities, along with leadership capabilities. A highly effective team player, consistently contributing to the achievement of project goals.`,
 }
 
 export const skills = {
@@ -72,25 +74,31 @@ export const experiences = [
     technologies: ["React Native", "Android Studio", "Node.js", "Xcode", "Trello", "Git", "ChatGPT", "Cursor", "Claude AI"],
     projects: [
       {
-        name: "KetoBalanced",
-        description: "Provides customised diet plans based on user data, integrating accounting principles into diet planning to ensure effective results. Features engaging workout videos and a variety of delicious keto recipes.",
-        link: "https://play.google.com/store/apps/details?id=com.ketoplan.lowcarb.tracker",
-      },
-      {
         name: "Calmate AI",
         description: "Leverages AI to analyze food intake and provide accurate calorie counts. Logs daily consumption and generates detailed reports, helping users stay informed and make smarter dietary choices.",
         link: "https://play.google.com/store/apps/details?id=com.calmate.ai&hl=en_IN",
       },
       {
-        name: "FastBetter",
-        description: "Empowers users with tools to track progress, set goals, and achieve sustainable fitness outcomes.",
-        link: "",
+        name: "KetoBalanced",
+        description: "Provides customised diet plans based on user data, integrating accounting principles into diet planning to ensure effective results. Features engaging workout videos and a variety of delicious keto recipes.",
+        link: "https://play.google.com/store/apps/details?id=com.ketoplan.lowcarb.tracker",
       },
       {
         name: "YogaRise",
         description: "Offers a holistic approach to wellness with guided yoga sessions, mindfulness exercises, and tailored routines.",
-        link: "",
+        link: "https://play.google.com/store/apps/details?id=yogarise.wellness.yoga",
       },
+      {
+        name: "FastBetter",
+        description: "Empowers users with tools to track progress, set goals, and achieve sustainable fitness outcomes.",
+        link: "https://play.google.com/store/apps/details?id=fastbetter.fastingtracker.weightloss",
+      },
+       {
+        name: "FastMate AI",
+        description: "An AI-powered fasting tracker that provides personalized insights and recommendations to optimize fasting routines. It helps users track their fasting periods, monitor progress, and receive tailored advice for better health outcomes.",
+        link: "https://play.google.com/store/apps/details?id=app.fastmate.ai",
+      },
+
     ],
   },
   {
@@ -131,7 +139,7 @@ export const experiences = [
       {
         name: "Next Door Hub",
         description: "A PG room booking app that allows users to book rooms online. Users can directly contact the PG owner and pay online.",
-        link: "",
+        link: "https://play.google.com/store/apps/details?id=com.nextdoor.app",
       },
       {
         name: "JMJ Sports",
@@ -162,12 +170,12 @@ export const experiences = [
       {
         name: "Education Lotusamaze",
         description: "Company portfolio and study website. Students can learn IT-related courses online.",
-        link: "",
+        link: "https://Lotusamaze.com",
       },
       {
         name: "Mytutorsonline",
         description: "A study website where students can take online classes through video calls by paying online and can also give online tests.",
-        link: "",
+        link: "https://www.mytutorsonline.com/",
       },
     ],
   },

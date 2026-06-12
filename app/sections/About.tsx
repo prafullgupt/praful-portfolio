@@ -5,7 +5,7 @@ import { User, Target, Award, Briefcase } from "lucide-react"
 import { personalInfo, achievements } from "@/lib/data"
 
 const stats = [
-  { icon: Briefcase, label: "Years Experience", value: "8+" },
+  { icon: Briefcase, label: "Years Experience", value: `${new Date().getFullYear() - 2018}+` },
   { icon: Target, label: "Projects Completed", value: "35+" },
   { icon: Award, label: "Certifications", value: "8+" },
   { icon: User, label: "Happy Clients", value: "15+" },
