@@ -10,6 +10,7 @@ const allProjects = experiences.flatMap((exp) =>
     ...project,
     company: exp.company,
     period: exp.period,
+    technologies: exp.technologies, // Use project-specific technologies if available, otherwise use experience-level technologies  
   }))
 ).concat(otherProjects.map((project) => ({
   ...project,
@@ -109,9 +110,9 @@ export default function Projects() {
                           Live Demo
                         </a>
                       )}
-                      {project.github && (
+                      {/* {project?.github && (
                         <a
-                          href={project.github}
+                          href={project?.github}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 text-gray-600 hover:text-gray-800 text-sm font-medium"
@@ -119,7 +120,7 @@ export default function Projects() {
                           <Github size={14} />
                           Source Code
                         </a>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </motion.div>
