@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Praful Gupta | Senior Mobile & Web Developer",
-  description: "Senior Application Developer with 8+ years of experience in React Native, Android, Next.js, and AI integration. Expert in building scalable mobile and web applications.",
+  description: "Senior Application Developer with 8+ years of experience in React Native, Android, Next.js, and AI integration.",
   keywords: ["Praful Gupta", "React Native Developer", "Android Developer", "Next.js Developer", "Mobile App Developer", "Team Leader"],
   authors: [{ name: "Praful Gupta" }],
   openGraph: {

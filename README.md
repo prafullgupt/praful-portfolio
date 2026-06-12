@@ -1,14 +1,13 @@
 # Praful Gupta - Portfolio Website
 
-A modern, responsive portfolio website built with Next.js 15, React 19, TypeScript, Tailwind CSS, and Framer Motion.
+A modern, fully responsive portfolio website built with Next.js 15, React 19, TypeScript, Tailwind CSS, and Framer Motion.
 
 ## Features
 
-- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Fully Responsive** - Perfect on mobile, tablet, and desktop
 - **Smooth Animations** - Powered by Framer Motion
-- **Dark/Light Theme** - Built with Tailwind CSS
 - **SEO Optimized** - Meta tags and Open Graph support
-- **Fast Performance** - Static export for optimal loading speed
+- **Fast Performance** - Static export for optimal loading
 - **Contact Form** - Ready-to-use contact section
 - **Timeline Design** - Beautiful work experience timeline
 
@@ -24,31 +23,24 @@ A modern, responsive portfolio website built with Next.js 15, React 19, TypeScri
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 ```bash
-# Navigate to project folder
 cd praful-portfolio
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-
-# Open http://localhost:3000
 ```
+
+Open http://localhost:3000
 
 ### Build for Production
 
 ```bash
 npm run build
 ```
-
-This will generate a static export in the `out` folder.
 
 ## Project Structure
 
@@ -74,7 +66,7 @@ praful-portfolio/
 │   └── utils.ts
 ├── public/
 │   ├── images/
-│   │   └── profile.png  # Your profile photo
+│   │   └── profile.png
 │   └── resume/
 │       └── Praful_Gupta_Resume.pdf
 ├── next.config.js
@@ -82,23 +74,9 @@ praful-portfolio/
 └── package.json
 ```
 
-## Customization
-
-All personal information is stored in `lib/data.ts`. Update this file to customize:
-- Personal details
-- Work experience
-- Skills
-- Projects
-- Education
-- Certifications
-
 ## Contact
 
 - Email: prafullgoel7@gmail.com
 - Phone: +91-8057381969
 - LinkedIn: https://linkedin.com/in/prafull-gupto-958633169
 - GitHub: https://github.com/prafullgupt
-
-## License
-
-This project is open source and available under the MIT License.

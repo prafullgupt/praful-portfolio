@@ -74,7 +74,7 @@ export const experiences = [
       {
         name: "KetoBalanced",
         description: "Provides customised diet plans based on user data, integrating accounting principles into diet planning to ensure effective results. Features engaging workout videos and a variety of delicious keto recipes.",
-        link: "https://play.google.com/store/apps/details?id=com.ketobalanced",
+        link: "https://play.google.com/store/apps/details?id=com.ketoplan.lowcarb.tracker",
       },
       {
         name: "Calmate AI",
