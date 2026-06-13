@@ -3,40 +3,67 @@
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react"
 import { personalInfo } from "@/lib/data"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import emailjs from "@emailjs/browser"
 
 export default function Contact() {
-  const formRef = useRef<HTMLFormElement | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [status, setStatus] = useState("idle")
+  
+  // Form data ke liye state
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    subject: "",
+    message: ""
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    if (!formRef.current) return
 
     setIsLoading(true)
     setStatus("idle")
 
+    // 🔍 Debug: Console mein check karo
+    console.log("Sending data:", formData)
+
     try {
-      // EmailJS sendForm method use karo
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,  // Service ID
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,   // Template ID
-        formRef.current,                                // Form reference
+      // sendForm ke jagah send method use karo
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!, // Public Key
+          user_name: formData.user_name,
+          user_email: formData.user_email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
         }
       )
 
+      console.log("Success:", result.text)
       setStatus("success")
-      formRef.current.reset() // Form reset after success
       
-      // 5 seconds baad status reset
+      // Form reset
+      setFormData({
+        user_name: "",
+        user_email: "",
+        subject: "",
+        message: ""
+      })
+      
       setTimeout(() => setStatus("idle"), 5000)
     } catch (error) {
-      console.error("Email send failed:", error)
+      console.error("EmailJS Error:", error)
       setStatus("error")
     } finally {
       setIsLoading(false)
@@ -99,7 +126,6 @@ export default function Contact() {
             <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-white/20">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Send a Message</h3>
               
-              {/* Success/Error Messages */}
               {status === "success" && (
                 <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg flex items-center gap-2 text-green-400">
                   <CheckCircle size={18} />
@@ -113,13 +139,15 @@ export default function Contact() {
                 </motion.div>
               )}
 
-              <form ref={formRef} className="space-y-3 sm:space-y-4" onSubmit={sendEmail}>
+              <form className="space-y-3 sm:space-y-4" onSubmit={sendEmail}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="block text-gray-300 text-xs sm:text-sm mb-1.5 sm:mb-2">Name</label>
                     <input 
                       type="text" 
-                      name="user_name"  // EmailJS template variable: {{user_name}}
+                      name="user_name"
+                      value={formData.user_name}
+                      onChange={handleChange}
                       placeholder="Your Name" 
                       required
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-sm" 
@@ -129,7 +157,9 @@ export default function Contact() {
                     <label className="block text-gray-300 text-xs sm:text-sm mb-1.5 sm:mb-2">Email</label>
                     <input 
                       type="email" 
-                      name="user_email"  // EmailJS template variable: {{user_email}}
+                      name="user_email"
+                      value={formData.user_email}
+                      onChange={handleChange}
                       placeholder="your@email.com" 
                       required
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-sm" 
@@ -140,7 +170,9 @@ export default function Contact() {
                   <label className="block text-gray-300 text-xs sm:text-sm mb-1.5 sm:mb-2">Subject</label>
                   <input 
                     type="text" 
-                    name="subject"  // EmailJS template variable: {{subject}}
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     placeholder="Project Inquiry" 
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors text-sm" 
@@ -150,7 +182,9 @@ export default function Contact() {
                   <label className="block text-gray-300 text-xs sm:text-sm mb-1.5 sm:mb-2">Message</label>
                   <textarea 
                     rows={4} 
-                    name="message"  // EmailJS template variable: {{message}}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Tell me about your project..." 
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg sm:rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none text-sm" 
