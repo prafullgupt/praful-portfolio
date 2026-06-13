@@ -7,6 +7,7 @@ import Projects from "./sections/Projects"
 import Education from "./sections/Education"
 import Contact from "./sections/Contact"
 import Footer from "./sections/Footer"
+import { Whatsapp } from "./components/whatsapp_component"
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Education />
       <Contact />
       <Footer />
+      <Whatsapp/>
     </main>
   )
 }

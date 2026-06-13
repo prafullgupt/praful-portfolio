@@ -7,6 +7,7 @@ export const personalInfo = {
   email: "prafullgoel7@gmail.com",
   phone: "+91-8057381969",
   phone2: "+91-7417319939",
+  whatsappNumber: "+918057381969",
   location: "Mohalla Kishor Kan, Sardhana, Meerut (UP) - 250342",
   linkedin: "https://linkedin.com/in/prafull-gupto-958633169",
   github: "https://github.com/prafullgupt",
