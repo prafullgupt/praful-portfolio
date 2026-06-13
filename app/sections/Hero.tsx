@@ -55,7 +55,7 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
               className="text-gray-300 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
-              {personalInfo.tagline}. Passionate about creating innovative mobile and web applications 
+              {personalInfo.tagline}. Passionate about creating innovative mobile and web applications
               with cutting-edge technologies including React Native, Next.js, and AI integration.
             </motion.p>
 
@@ -140,6 +140,46 @@ export default function Hero() {
               </motion.div>
               <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 1 }} className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
                 Team Leader
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 bg-green-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+              >
+                Android
+              </motion.div>
+              <motion.div
+                animate={{ x: [0, 8, 0] }}
+                transition={{ duration: 2.8, repeat: Infinity, delay: 1.2 }}
+                className="absolute top-1/2 -right-2 sm:-right-6 -translate-y-1/2 bg-sky-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+              >
+                React JS
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2.6, repeat: Infinity, delay: 1.5 }}
+                className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 bg-gray-800 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+              >
+                iOS
+              </motion.div>
+
+              {/* Left Side: React Native */}
+              <motion.div
+                animate={{ x: [0, -8, 0] }}
+                transition={{ duration: 2.7, repeat: Infinity, delay: 0.8 }}
+                className="absolute top-1/2 -left-2 sm:-left-6 -translate-y-1/2 bg-cyan-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+              >
+                React Native
+              </motion.div>
+
+              {/* Bottom Center: NodeJS */}
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 2.4, repeat: Infinity, delay: 2 }}
+                className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 bg-emerald-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+              >
+                NodeJS
               </motion.div>
             </div>
           </motion.div>
