@@ -7,7 +7,7 @@ import { useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
 
 export default function Contact() {
-  const formRef = useRef(null)
+  const formRef = useRef<HTMLFormElement | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [status, setStatus] = useState("idle")
 
