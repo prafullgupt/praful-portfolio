@@ -4,7 +4,8 @@ import { Inter } from "next/font/google"
 // @ts-ignore
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { experienceStartYear } from "@/lib/data"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Praful Gupta" }],
   openGraph: {
     title: "Praful Gupta | Senior Mobile & Web Developer",
-    description: "8+ years of experience building world-class mobile and web applications",
+    description: `${new Date().getFullYear() - experienceStartYear} years of experience building world-class mobile and web applications`,
     type: "website",
   },
   icons: {
@@ -31,10 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>{children}
+      <body className={inter.className}>
+        {children}
         <Analytics mode="production" debug={false} />
+        <SpeedInsights debug={false} />
       </body>
-
     </html>
   )
 }
