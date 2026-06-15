@@ -100,7 +100,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/prafulgupta/Documents/Project/profile/praful-portfolio",
+    "outputFileTracingRoot": "/Users/prafulgupta/Documents/Project/praful-portfolio",
     "experimental": {
       "useSkewCookie": false,
       "cacheLife": {
@@ -290,10 +290,10 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "/Users/prafulgupta/Documents/Project/profile/praful-portfolio"
+      "root": "/Users/prafulgupta/Documents/Project/praful-portfolio"
     }
   },
-  "appDir": "/Users/prafulgupta/Documents/Project/profile/praful-portfolio",
+  "appDir": "/Users/prafulgupta/Documents/Project/praful-portfolio",
   "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",
