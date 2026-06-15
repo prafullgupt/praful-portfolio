@@ -11,7 +11,7 @@ import { Whatsapp } from "./components/whatsapp_component"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen w-full overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />
