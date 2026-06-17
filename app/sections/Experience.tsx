@@ -11,8 +11,15 @@ export default function Experience() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   return (
-    <section id="experience" className="py-20 sm:py-28 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 relative overflow-hidden">
+    <section id="experience" className="py-20 sm:py-28 bg-slate-50 dark:bg-gray-900 transition-colors duration-500 relative overflow-hidden">
       {/* Background Decorations */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
@@ -52,7 +59,7 @@ export default function Experience() {
           </div>
           
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            A journey through my professional career, showcasing growth from Android Developer to Team Leader
+            A journey through my professional career, showcasing growth from Application and Web Developer to Team Leader
           </p>
         </motion.div>
 
