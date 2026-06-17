@@ -6,6 +6,7 @@ import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { experienceStartYear } from "@/lib/data"
+import { ThemeProvider } from "@/app/context/ThemeContext"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -33,7 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+
         <Analytics mode="production" debug={false} />
         <SpeedInsights debug={false} />
       </body>

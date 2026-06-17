@@ -4,10 +4,13 @@ import { motion } from "framer-motion"
 import { Download, Github, Linkedin, Mail, Phone, MapPin, ChevronDown } from "lucide-react"
 import { experienceStartYear, personalInfo } from "@/lib/data"
 import Image from "next/image"
+import { useTheme } from "../context/ThemeContext"
 
 export default function Hero() {
+  const { darkMode } = useTheme();
+  
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 pt-16">
+    <section id="home" className={`min-h-screen flex items-center justify-center relative overflow-hidden pt-16 transition-colors duration-300 ${darkMode ? "bg-gradient-to-br dark:bg-gray-900" : "bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"}`}>
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
@@ -147,21 +150,21 @@ export default function Hero() {
                 transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
                 className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 bg-green-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
               >
-                Android
+                React Native
               </motion.div>
               <motion.div
                 animate={{ x: [0, 8, 0] }}
                 transition={{ duration: 2.8, repeat: Infinity, delay: 1.2 }}
                 className="absolute top-1/2 -right-2 sm:-right-6 -translate-y-1/2 bg-sky-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
               >
-                React JS
+                IOS
               </motion.div>
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2.6, repeat: Infinity, delay: 1.5 }}
                 className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 bg-gray-800 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
               >
-                iOS
+                React JS
               </motion.div>
 
               {/* Left Side: React Native */}
@@ -170,7 +173,7 @@ export default function Hero() {
                 transition={{ duration: 2.7, repeat: Infinity, delay: 0.8 }}
                 className="absolute top-1/2 -left-2 sm:-left-6 -translate-y-1/2 bg-cyan-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
               >
-                React Native
+                Android
               </motion.div>
 
               {/* Bottom Center: NodeJS */}
