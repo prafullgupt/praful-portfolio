@@ -22,9 +22,9 @@ export default function Skills() {
               <motion.div whileHover={{ y: -3 }} className={`${category.bgColor} rounded-xl sm:rounded-2xl p-4 sm:p-6 border ${category.borderColor} hover:shadow-lg transition-all`}>
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center flex-shrink-0`}>
-                    <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <category.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${!darkMode ? 'text-gray' : 'text-white'}`} />
                   </div>
-                  <h3 className={`text-base sm:text-lg lg:text-xl font-bold  ${(darkMode && (index < 2)) ? "text-white-800": "text-gray-800" }`}>{category.title}</h3>
+                  <h3 className={`text-base sm:text-lg lg:text-xl font-bold  ${(darkMode) ? "text-white-800": "text-gray-800" }`}>{category.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {category.skills.map((skill, skillIndex) => (

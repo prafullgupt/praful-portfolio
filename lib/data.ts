@@ -276,7 +276,7 @@ export const skillCategories = [
     icon: Layers,
     skills: skills.otherTools,
     color: "from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400",
-    bgColor: "bg-orange-50 dark:bg-orange-500/10",
+    bgColor: "bg-blue-50 dark:bg-blue-500/10",
     textColor: "text-orange-700 dark:text-orange-300",
     borderColor: "border-orange-200 dark:border-orange-500/20",
   },

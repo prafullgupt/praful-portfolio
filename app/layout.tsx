@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-// Ignore missing type declarations for CSS side-effect import
 // @ts-ignore
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { experienceStartYear } from "@/lib/data"
 import { ThemeProvider } from "@/app/context/ThemeContext"
+import AnalyticsProvider from "@/app/components/AnalyticsProvider" // <-- Add this
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -35,9 +36,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <ThemeProvider>
-          {children}
+          <AnalyticsProvider> {/* <-- Wrap children */}
+            {children}
+          </AnalyticsProvider>
         </ThemeProvider>
-
         <Analytics mode="production" debug={false} />
         <SpeedInsights debug={false} />
       </body>

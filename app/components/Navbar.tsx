@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Phone, Mail, Sun, Moon } from "lucide-react"
 import { personalInfo ,navLinks} from "@/lib/data"
 import { useTheme } from "@/app/context/ThemeContext"
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const scrollToSection = (href: string, callback?: () => void): void => {
   const element = document.querySelector(href)
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { darkMode, toggleDarkMode } = useTheme()
+   const { logCustomEvent } = useAnalytics();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -33,6 +35,7 @@ export default function Navbar() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute("id")
+            logCustomEvent(id, { section: id })
             if (id) window.history.replaceState(null, "", `#${id}`)
           }
         })
