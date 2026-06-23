@@ -68,7 +68,7 @@ function ProgressBar({ level, color, delay = 0, isDark }: { level: number; color
           />
 
           {/* Top highlight */}
-          <div className="absolute top-0 left-0 right-0 h-[40%] bg-white/20 rounded-t-full" />
+          <div className="absolute top-0 left-0 right-0 h-[100%] bg-white/20 dark:bg-white rounded-full" />
         </motion.div>
       </div>
       <motion.span
@@ -357,7 +357,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className={`mt-14 sm:mt-20 p-8 sm:p-10 rounded-3xl border ${darkMode ? "bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" : "bg-white border-gray-200"} 
+          className={`mt-14 sm:mt-20 p-8 sm:p-10 rounded-3xl border ${darkMode ? "bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" : "bg-gradient-to-r from-blue-100 to-sky-300"} 
             text-center relative overflow-hidden`}
         >
           <div className={`absolute inset-0 bg-gradient-to-r ${darkMode ? 'from-blue-500/5 to-purple-500/5' : 'from-blue-50 to-purple-50'} opacity-50`} />
