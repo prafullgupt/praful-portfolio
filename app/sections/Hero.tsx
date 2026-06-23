@@ -5,10 +5,11 @@ import { Download, Github, Linkedin, Mail, Phone, MapPin, ChevronDown } from "lu
 import { experienceStartYear, personalInfo } from "@/lib/data"
 import Image from "next/image"
 import { useTheme } from "../context/ThemeContext"
+import { AnimatedNameWave } from "../components/AnimatedName"
 
 export default function Hero() {
   const { darkMode } = useTheme();
-  
+
   return (
     <section id="home" className={`min-h-screen flex items-center justify-center relative overflow-hidden pt-16 transition-colors duration-300 ${darkMode ? "bg-gradient-to-br dark:bg-gray-900" : "bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"}`}>
       <div className="absolute inset-0 opacity-10">
@@ -36,11 +37,16 @@ export default function Hero() {
               👋 Welcome to my Portfolio
             </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
+            {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
               Hi, I&apos;m{" "}
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 {personalInfo.name}
               </span>
+            </h1> */}
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
+              Hi, I'm{" "}
+              <AnimatedNameWave name={personalInfo.name} />
             </h1>
 
             <motion.h2

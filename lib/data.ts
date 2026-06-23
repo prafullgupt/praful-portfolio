@@ -1,4 +1,4 @@
-export const experienceStartYear = 2018 ;
+export const experienceStartYear = 2018;
 import { User, Target, Award, Briefcase } from "lucide-react"
 import { Code2, Wrench, Layers, Languages } from "lucide-react"
 
@@ -113,7 +113,7 @@ export const experiences = [
         description: "Empowers users with tools to track progress, set goals, and achieve sustainable fitness outcomes.",
         link: "https://play.google.com/store/apps/details?id=fastbetter.fastingtracker.weightloss",
       },
-       {
+      {
         name: "FastMate AI",
         description: "An AI-powered fasting tracker that provides personalized insights and recommendations to optimize fasting routines. It helps users track their fasting periods, monitor progress, and receive tailored advice for better health outcomes.",
         link: "https://play.google.com/store/apps/details?id=app.fastmate.ai",
@@ -124,7 +124,7 @@ export const experiences = [
   },
   {
     id: 2,
-    company: "Ondot Systems (Fiserv)",
+    company: "NSSPL - Ondot Systems (Fiserv)",
     role: "Android Developer - SUST Team",
     period: "2022 - 2023",
     location: "NSSPL, Delhi",
@@ -136,7 +136,7 @@ export const experiences = [
     ],
     technologies: ["Core Java", "Android Studio", "Kotlin", "Git", "Jenkins", "JIRA"],
     projects: [],
-        image: "/images/office_icon.png",
+    image: "/images/office_icon.png",
   },
   {
     id: 3,
@@ -174,7 +174,7 @@ export const experiences = [
         link: "",
       },
     ],
-        image: "/images/office_icon.png",
+    image: "/images/office_icon.png",
   },
   {
     id: 4,
@@ -201,7 +201,7 @@ export const experiences = [
         link: "https://www.mytutorsonline.com/",
       },
     ],
-        image: "/images/office_icon.png",
+    image: "/images/office_icon.png",
   },
 ]
 
@@ -212,7 +212,7 @@ export const otherProjects = [
     description: "Built & deployed a full-stack Ayurvedic wellness platform using Next.js 14 App Router with 7+ dynamic pages, reusable components, and dynamic blog routing.",
     technologies: ["Next.js", "Trello", "Git", "GoDaddy", "Cloudflare", "ChatGPT", "Cursor", "Claude AI", "Kimi"],
     github: "https://github.com/prafullgupt/ayuryog-nextjs",
-    link: "",
+    link: "https://ayuryog.life/",
   },
 ]
 
@@ -252,41 +252,131 @@ export const achievements = [
   "Managed end-to-end app deployment on Play Store and App Store",
 ]
 
+// export const skillCategories = [
+//   {
+//     title: "Programming & Frameworks",
+//     icon: Code2,
+//     skills: skills.programming,
+//     color: "from-blue-500 to-cyan-500 dark:from-blue-400 dark:to-cyan-400",
+//     bgColor: "bg-blue-50 dark:bg-blue-500/10",
+//     textColor: "text-blue-700 dark:text-blue-300",
+//     borderColor: "border-blue-200 dark:border-blue-500/20",
+//   },
+//   {
+//     title: "Development Tools",
+//     icon: Wrench,
+//     skills: skills.tools,
+//     color: "from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400",
+//     bgColor: "bg-purple-50 dark:bg-purple-500/10",
+//     textColor: "text-purple-700 dark:text-purple-300",
+//     borderColor: "border-purple-200 dark:border-purple-500/20",
+//   },
+//   {
+//     title: "Other Tools & Platforms",
+//     icon: Layers,
+//     skills: skills.otherTools,
+//     color: "from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400",
+//     bgColor: "bg-blue-50 dark:bg-blue-500/10",
+//     textColor: "text-orange-700 dark:text-orange-300",
+//     borderColor: "border-orange-200 dark:border-orange-500/20",
+//   },
+//   {
+//     title: "Languages",
+//     icon: Languages,
+//     skills: skills.languages,
+//     color: "from-green-500 to-emerald-500 dark:from-green-400 dark:to-emerald-400",
+//     bgColor: "bg-green-50 dark:bg-green-500/10",
+//     textColor: "text-green-700 dark:text-green-300",
+//     borderColor: "border-green-200 dark:border-green-500/20",
+//   },
+// ]
+
 export const skillCategories = [
   {
     title: "Programming & Frameworks",
     icon: Code2,
-    skills: skills.programming,
-    color: "from-blue-500 to-cyan-500 dark:from-blue-400 dark:to-cyan-400",
+    description: "Core technologies for mobile & web development",
+    color: "from-blue-500 to-cyan-500",
+    darkColor: "from-blue-400 to-cyan-400",
     bgColor: "bg-blue-50 dark:bg-blue-500/10",
     textColor: "text-blue-700 dark:text-blue-300",
     borderColor: "border-blue-200 dark:border-blue-500/20",
+    progressColor: "bg-blue-500",
+    skills: [
+      { name: "Core Java", level: 95 },
+      { name: "React Native", level: 92 },
+      { name: "React JS", level: 90 },
+      { name: "Next.js", level: 85 },
+      { name: "JavaScript", level: 93 },
+      { name: "XML", level: 88 },
+      { name: "Android", level: 96 },
+      { name: "iOS", level: 85 },
+      { name: "Kotlin", level: 90 },
+      { name: "MVVM", level: 92 },
+      { name: "Firebase", level: 88 },
+      { name: "REST APIs", level: 95 },
+      { name: "Payment Gateway", level: 82 },
+      { name: "Push Notifications", level: 90 },
+      { name: "Crashlytics", level: 87 },
+      { name: "App Security", level: 85 },
+    ]
   },
   {
     title: "Development Tools",
     icon: Wrench,
-    skills: skills.tools,
-    color: "from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400",
+    description: "IDEs and workflow tools for efficient development",
+    color: "from-purple-500 to-pink-500",
+    darkColor: "from-purple-400 to-pink-400",
     bgColor: "bg-purple-50 dark:bg-purple-500/10",
     textColor: "text-purple-700 dark:text-purple-300",
     borderColor: "border-purple-200 dark:border-purple-500/20",
+    progressColor: "bg-purple-500",
+    skills: [
+      { name: "Android Studio", level: 96 },
+      { name: "Xcode", level: 85 },
+      { name: "Visual Studio Code", level: 94 },
+      { name: "Notepad++", level: 80 },
+      { name: "Git", level: 92 },
+      { name: "Jenkins", level: 78 },
+      { name: "JIRA", level: 88 },
+      { name: "ChatGPT", level: 95 },
+      { name: "Cursor AI", level: 90 },
+    ]
   },
   {
     title: "Other Tools & Platforms",
     icon: Layers,
-    skills: skills.otherTools,
-    color: "from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400",
-    bgColor: "bg-blue-50 dark:bg-blue-500/10",
+    description: "Platforms for deployment, management & collaboration",
+    color: "from-orange-500 to-red-500",
+    darkColor: "from-orange-400 to-red-400",
+    bgColor: "bg-orange-50 dark:bg-orange-500/10",
     textColor: "text-orange-700 dark:text-orange-300",
     borderColor: "border-orange-200 dark:border-orange-500/20",
+    progressColor: "bg-orange-500",
+    skills: [
+      { name: "Play Console (Android)", level: 92 },
+      { name: "App Store Connect (Apple)", level: 85 },
+      { name: "Microsoft Office", level: 88 },
+      { name: "Putty", level: 75 },
+      { name: "FileZilla", level: 80 },
+      { name: "Postman", level: 93 },
+      { name: "Trello", level: 85 },
+      { name: "Cloudflare", level: 78 },
+    ]
   },
   {
     title: "Languages",
     icon: Languages,
-    skills: skills.languages,
-    color: "from-green-500 to-emerald-500 dark:from-green-400 dark:to-emerald-400",
+    description: "Communication proficiency in different languages",
+    color: "from-green-500 to-emerald-500",
+    darkColor: "from-green-400 to-emerald-400",
     bgColor: "bg-green-50 dark:bg-green-500/10",
     textColor: "text-green-700 dark:text-green-300",
     borderColor: "border-green-200 dark:border-green-500/20",
+    progressColor: "bg-green-500",
+    skills: [
+      { name: "English", level: 90 },
+      { name: "Hindi", level: 100 },
+    ]
   },
 ]
