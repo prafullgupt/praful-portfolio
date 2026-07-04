@@ -13,11 +13,13 @@ export const personalInfo = {
   location: "Mohalla Kishor Kan, Sardhana, Meerut (UP) - 250342",
   linkedin: "https://linkedin.com/in/prafull-gupto-958633169",
   github: "https://github.com/prafullgupt",
+  key: 'praful-gupta-portfolio',
+  Live: "https://praful-gupta-portfolio.vercel.app/",
   about: `Dedicated and results-oriented Mobile Application Developer with over ${new Date().getFullYear() - experienceStartYear}+ years of experience in software engineering. Currently serving as a Team Leader and React Native Developer at Harshit Infosolutions Pvt. Ltd. Proven track record in the complete software development life cycle, with expertise in development, release, and maintenance. Additionally skilled in integrating AI (Artificial Intelligence) solutions into mobile applications to enhance user experience and performance. Possess excellent communication skills, self-motivation, and strong organizational abilities, along with leadership capabilities. A highly effective team player, consistently contributing to the achievement of project goals.`,
 }
 
 export const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "/" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },

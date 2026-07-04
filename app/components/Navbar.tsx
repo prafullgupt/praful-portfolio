@@ -8,10 +8,15 @@ import { useTheme } from "@/app/context/ThemeContext"
 import { useAnalytics } from '../hooks/useAnalytics';
 
 const scrollToSection = (href: string, callback?: () => void): void => {
-  const element = document.querySelector(href)
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" })
-    window.history.replaceState(null, "", href)
+  if (href === "/") {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    window.history.replaceState(null, "", "/")
+  } else {
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+      window.history.replaceState(null, "", href)
+    }
   }
   if (callback) callback()
 }
@@ -42,7 +47,8 @@ export default function Navbar() {
             if (id) {
               setActiveSection(id)
               logCustomEvent(id, { section: id })
-              window.history.replaceState(null, "", `#${id}`)
+              // Home ke liye "/" baki sab ke liye #id
+              window.history.replaceState(null, "", id === "home" ? "/" : `#${id}`)
             }
           }
         })
@@ -55,7 +61,7 @@ export default function Navbar() {
 
   const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string, isMobile = false) => {
     e.preventDefault()
-    const sectionId = href.replace("#", "")
+    const sectionId = href === "/" ? "home" : href.replace("#", "")
     setActiveSection(sectionId)
     if (isMobile) {
       setIsOpen(false)
@@ -79,12 +85,12 @@ export default function Navbar() {
           <div className="flex items-center gap-4 sm:gap-6">
             {/* Logo */}
             <motion.a
-              href="#home"
+              href="/"
               className="flex items-center gap-2 text-xl sm:text-2xl font-bold"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              onClick={(e) => handleNavClick(e, "#home")}
+              onClick={(e) => handleNavClick(e, "/")}
             >
               <span className={`bg-gradient-to-r ${isLightScrolled
                 ? "from-blue-600 via-purple-600 to-pink-600"
@@ -113,7 +119,7 @@ export default function Navbar() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               {navLinks.map((link, index) => {
-                const sectionId = link.href.replace("#", "")
+                const sectionId = link.href === "/" ? "home" : link.href.replace("#", "")
                 const isActive = activeSection === sectionId
                 return (
                   <motion.a
@@ -180,7 +186,7 @@ export default function Navbar() {
           >
             <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
               {navLinks.map((link) => {
-                const sectionId = link.href.replace("#", "")
+                const sectionId = link.href === "/" ? "home" : link.href.replace("#", "")
                 const isActive = activeSection === sectionId
                 return (
                   <a
