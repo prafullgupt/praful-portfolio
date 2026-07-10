@@ -15,6 +15,7 @@ export const personalInfo = {
   github: "https://github.com/prafullgupt",
   key: 'praful-gupta-portfolio',
   Live: "https://praful-gupta-portfolio.vercel.app/",
+  contactUrl: "/#contact",
   about: `Dedicated and results-oriented Mobile Application Developer with over ${new Date().getFullYear() - experienceStartYear}+ years of experience in software engineering. Currently serving as a Team Leader and React Native Developer at Harshit Infosolutions Pvt. Ltd. Proven track record in the complete software development life cycle, with expertise in development, release, and maintenance. Additionally skilled in integrating AI (Artificial Intelligence) solutions into mobile applications to enhance user experience and performance. Possess excellent communication skills, self-motivation, and strong organizational abilities, along with leadership capabilities. A highly effective team player, consistently contributing to the achievement of project goals.`,
 }
 
@@ -216,6 +217,23 @@ export const otherProjects = [
     github: "https://github.com/prafullgupt/ayuryog-nextjs",
     link: "https://ayuryog.life/",
   },
+  {
+    id: 2,
+    name: "Humble info tech - Empowering Digital Solutions",
+    description: "Built & deployed a full-stack Humble info tech platform using Next.js 14 App Router with 6+ dynamic pages, reusable components",
+    technologies: ["Next.js", "Trello", "Git", "GoDaddy", "Cloudflare", "ChatGPT", "Cursor", "Claude AI", "Kimi"],
+    github: "",
+    link: "https://www.humbleinfotech.com/",
+  },
+  {
+    id: 3,
+    name: "Lead Management System",
+    description: "Built and deployed a full-stack lead management platform using Next.js 14 App Router with 15+ dynamic pages, reusable components, role-based access control, and real-time lead tracking. Integrated REST APIs with secure authentication and responsive UI.",
+    technologies: ["Next.js", "Node.js", "Trello", "Git", "Cloudflare", "ChatGPT", "Cursor", "Claude AI", "Kimi"],
+    github: "",
+    link: "",
+  }
+
 ]
 
 export const education = [
@@ -349,7 +367,7 @@ export const skillCategories = [
     title: "Other Tools & Platforms",
     icon: Layers,
     description: "Platforms for deployment, management & collaboration",
-     color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-pink-500",
     darkColor: "from-purple-400 to-pink-400",
     bgColor: "bg-purple-50 dark:bg-purple-500/10",
     textColor: "text-purple-700 dark:text-purple-300",
