@@ -223,7 +223,7 @@ export const QUICK_SUGGESTIONS: string[] = [
 // ============================================
 export function findBestResponse(userMessage: string): string {
   const msg = userMessage.toLowerCase();
-  let bestMatch: string | null = null;
+  let bestMatch: string = '';
   let maxScore = 0;
 
   for (const [, data] of Object.entries(PORTFOLIO_KNOWLEDGE)) {

@@ -23,7 +23,7 @@ import {personalInfo} from '@/lib/data'
 // Next.js 14+ | TypeScript | Client Component
 // ============================================
 
-export default function AIChatbot(): JSX.Element {
+export default function AIChatbot(): React.ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
