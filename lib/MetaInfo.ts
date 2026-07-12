@@ -62,14 +62,14 @@ export const MetaInfo = {
     type: "website",
     images: [
       {
-        url: "https://praful-gupta-portfolio.vercel.app/images/logo.png", // 1200x630 recommended
+        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png", // 1200x630 recommended
         width: 1200,
         height: 630,
         alt: "Praful Gupta - Senior Mobile & Web Developer",
         type: "image/png",
       },
       {
-        url: "https://praful-gupta-portfolio.vercel.app/images/logo.png", // 1:1 for WhatsApp
+        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png", // 1:1 for WhatsApp
         width: 800,
         height: 800,
         alt: "Praful Gupta - Senior Mobile & Web Developer",
@@ -90,17 +90,17 @@ export const MetaInfo = {
   // Icons — multiple sizes for all devices
   icons: {
     icon: [
-      { url: "/images/logo.png", type: "image/png", sizes: "32x32" },
-      { url: "/images/logo.png", type: "image/png", sizes: "192x192" },
+      { url: "/images/profile.png", type: "image/png", sizes: "32x32" },
+      { url: "/images/profile.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: ["/images/logo.png"],
+    shortcut: ["/images/profile.png"],
     apple: [
-      { url: "/images/logo.png", sizes: "180x180", type: "image/png" },
+      { url: "/images/profile.png", sizes: "180x180", type: "image/png" },
     ],
     other: [
       {
         rel: "mask-icon",
-        url: "/images/logo.png",
+        url: "/images/profile.png",
         color: "#5bbad5",
       },
     ],
