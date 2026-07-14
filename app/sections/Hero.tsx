@@ -37,13 +37,6 @@ export default function Hero() {
               👋 Welcome to my Portfolio
             </motion.div>
 
-            {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
-              Hi, I&apos;m{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                {personalInfo.name}
-              </span>
-            </h1> */}
-
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
               Hi, I'm{" "}
               <AnimatedNameWave name={personalInfo.name} />
@@ -144,51 +137,77 @@ export default function Hero() {
               <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
                 <Image src="/images/profile.png" alt={personalInfo.key} fill className="object-cover" priority sizes="(max-width: 640px) 224px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px" />
               </div>
-              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity }} className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-blue-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                {new Date().getFullYear() - experienceStartYear}+ Years
-              </motion.div>
-              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 1 }} className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
-                Team Leader
-              </motion.div>
 
+              {/* Top-Left: React Native */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-                className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 bg-green-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+                className="absolute -top-3 left-0 sm:-top-4 sm:-left-4 bg-green-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
               >
                 React Native
               </motion.div>
+
+              {/* Top-Center: AI Prompt Engineer */}
               <motion.div
-                animate={{ x: [0, 8, 0] }}
-                transition={{ duration: 2.8, repeat: Infinity, delay: 1.2 }}
-                className="absolute top-1/2 -right-2 sm:-right-6 -translate-y-1/2 bg-sky-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 2.2, repeat: Infinity, delay: 0.3 }}
+                className="absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-rose-500 text-white px-3 py-1 sm:px-5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg whitespace-nowrap"
               >
-                IOS
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2.6, repeat: Infinity, delay: 1.5 }}
-                className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 bg-gray-800 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
-              >
-                React JS
+               AI Prompt Engineer
               </motion.div>
 
-              {/* Left Side: React Native */}
+              {/* Top-Right: 8+ Years (thoda neecha kar diya) */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute top-8 right-0 sm:top-8 sm:-right-4 bg-blue-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
+              >
+                {new Date().getFullYear() - experienceStartYear}+ Years
+              </motion.div>
+
+              {/* Left-Middle: Android */}
               <motion.div
                 animate={{ x: [0, -8, 0] }}
                 transition={{ duration: 2.7, repeat: Infinity, delay: 0.8 }}
-                className="absolute top-1/2 -left-2 sm:-left-6 -translate-y-1/2 bg-cyan-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+                className="absolute top-1/2 -left-2 sm:-left-8 -translate-y-1/2 bg-cyan-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
               >
                 Android
               </motion.div>
 
-              {/* Bottom Center: NodeJS */}
+              {/* Right-Middle: IOS */}
+              <motion.div
+                animate={{ x: [0, 8, 0] }}
+                transition={{ duration: 2.8, repeat: Infinity, delay: 1.2 }}
+                className="absolute top-1/2 -right-2 sm:-right-8 -translate-y-1/2 bg-sky-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
+              >
+                IOS
+              </motion.div>
+
+              {/* Bottom-Left: Team Leader */}
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                className="absolute -bottom-3 left-0 sm:-bottom-4 sm:-left-4 bg-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
+              >
+                Team Leader
+              </motion.div>
+
+              {/* Bottom-Center: NodeJS */}
               <motion.div
                 animate={{ y: [0, 6, 0] }}
                 transition={{ duration: 2.4, repeat: Infinity, delay: 2 }}
-                className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 bg-emerald-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg"
+                className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 bg-emerald-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
               >
                 NodeJS
+              </motion.div>
+
+              {/* Bottom-Right: React JS */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2.6, repeat: Infinity, delay: 1.5 }}
+                className="absolute -bottom-3 right-0 sm:-bottom-4 sm:-right-4 bg-gray-800 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap"
+              >
+                React JS
               </motion.div>
             </div>
           </motion.div>

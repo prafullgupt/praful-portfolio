@@ -194,12 +194,12 @@ export const experiences = [
     technologies: ["PHP Laravel", "MySQL Database", "HTML", "CSS", "Photoshop"],
     projects: [
       {
-        name: "Education Lotusamaze",
+        name: "Education Lotusamaze (Platform - website)",
         description: "Company portfolio and study website. Students can learn IT-related courses online.",
         link: "https://Lotusamaze.com",
       },
       {
-        name: "Mytutorsonline",
+        name: "Mytutorsonline (Platform - website)",
         description: "A study website where students can take online classes through video calls by paying online and can also give online tests.",
         link: "https://www.mytutorsonline.com/",
       },
@@ -211,7 +211,7 @@ export const experiences = [
 export const otherProjects = [
   {
     id: 1,
-    name: "Ayuryog - Ayurvedic Wellness Platform",
+    name: "Ayuryog - Ayurvedic Wellness (Platform - website)",
     description: "Built & deployed a full-stack Ayurvedic wellness platform using Next.js 14 App Router with 7+ dynamic pages, reusable components, and dynamic blog routing.",
     technologies: ["Next.js", "Trello", "Git", "GoDaddy", "Cloudflare", "ChatGPT", "Cursor", "Claude AI", "Kimi"],
     github: "https://github.com/prafullgupt/ayuryog-nextjs",
@@ -219,7 +219,7 @@ export const otherProjects = [
   },
   {
     id: 2,
-    name: "Humble info tech - Empowering Digital Solutions",
+    name: "Humble info tech - Empowering Digital Solutions (Platform - website)",
     description: "Built & deployed a full-stack Humble info tech platform using Next.js 14 App Router with 6+ dynamic pages, reusable components",
     technologies: ["Next.js", "Trello", "Git", "GoDaddy", "Cloudflare", "ChatGPT", "Cursor", "Claude AI", "Kimi"],
     github: "",
@@ -227,7 +227,7 @@ export const otherProjects = [
   },
   {
     id: 3,
-    name: "Lead Management System",
+    name: "Lead Management System (Platform - website)",
     description: "Built and deployed a full-stack lead management platform using Next.js 14 App Router with 15+ dynamic pages, reusable components, role-based access control, and real-time lead tracking. Integrated REST APIs with secure authentication and responsive UI.",
     technologies: ["Next.js", "Node.js", "Trello", "Git", "Cloudflare", "ChatGPT", "Cursor", "Claude AI", "Kimi"],
     github: "",
