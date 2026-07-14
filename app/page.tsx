@@ -9,6 +9,8 @@ import Contact from "./sections/Contact"
 import Footer from "./sections/Footer"
 import { Whatsapp } from "./components/whatsapp_component"
 import AIChatbot from "./components/AIChatbot"
+import FlyingBird from "./components/FlyingBird"
+import SmartBirds from "./components/SmartBirds"
 
 export default function Home() {
   return (
@@ -23,7 +25,9 @@ export default function Home() {
       <Contact />
       <Footer />
       {/* <Whatsapp/> */}
-      <AIChatbot/>
+      <AIChatbot />
+      <FlyingBird />
+      {/* <SmartBirds /> */}
     </main>
   )
 }

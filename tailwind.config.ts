@@ -49,6 +49,16 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      // 👇 Yeh add karein - Bird animation ke liye
+      keyframes: {
+        flap: {
+          "0%": { transform: "scaleY(1) rotate(0deg)" },
+          "100%": { transform: "scaleY(0.6) rotate(-10deg)" },
+        },
+      },
+      animation: {
+        flap: "flap 0.35s ease-in-out infinite alternate",
+      },
     },
   },
   plugins: [],
