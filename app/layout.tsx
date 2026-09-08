@@ -2,13 +2,15 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 // @ts-ignore
 import "./globals.css"
+
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { experienceStartYear } from "@/lib/data"
+
 import { ThemeProvider } from "@/app/context/ThemeContext"
-import AnalyticsProvider from "@/app/components/AnalyticsProvider" // <-- Add this
+import AnalyticsProvider from "@/app/components/AnalyticsProvider"
 import { MetaInfo, StructuredData } from "@/lib/MetaInfo"
-import Script from "next/script";
+
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,22 +23,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
-        <ThemeProvider>
-          <StructuredData />
-          <AnalyticsProvider> {/* <-- Wrap children */}
-            {children}
-          </AnalyticsProvider>
-        </ThemeProvider>
-        <Analytics mode="production" debug={false} />
-        <SpeedInsights debug={false} />
-      </body>
-       <Script
+      <head>
+        {/* Google AdSense */}
+        <Script
           async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6386302858967654"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+      </head>
+
+      <body className={inter.className}>
+        <ThemeProvider>
+          <StructuredData />
+
+          <AnalyticsProvider>
+            {children}
+          </AnalyticsProvider>
+        </ThemeProvider>
+
+        {/* Vercel Analytics */}
+        <Analytics mode="production" debug={false} />
+
+        {/* Vercel Speed Insights */}
+        <SpeedInsights debug={false} />
+      </body>
     </html>
   )
 }
