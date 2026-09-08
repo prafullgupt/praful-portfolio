@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://praful-gupta-portfolio.vercel.app/sitemap.xml
