@@ -30,14 +30,13 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics mode="production" debug={false} />
         <SpeedInsights debug={false} />
-        <Script
+      </body>
+       <Script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-
-      </body>
     </html>
   )
 }

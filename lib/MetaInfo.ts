@@ -10,6 +10,9 @@ export const MetaInfo = {
   },
   description: "Senior Application Developer with 8+ years of experience in React Native, Android, Next.js, and AI integration. Building world-class mobile and web applications.",
   
+  other: {
+    "google-adsense-account": "ca-pub-6386302858967654",
+  },
   // Keywords — comprehensive and targeted
   keywords: [
     "Praful Gupta",
