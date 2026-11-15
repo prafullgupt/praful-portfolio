@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 import {
   MessageCircle,
   X,
@@ -525,8 +526,15 @@ export default function AIChatbot(): React.ReactNode {
             {/* Header */}
             <div className="chat-header">
               <div className="chat-header-info">
-                <div className="chat-avatar">
-                  <Sparkles size={20} color="white" />
+                <div className="chat-avatar relative overflow-hidden">
+                  <Image
+                    src="/images/profile.png"
+                    alt="Praful Gupta - AI Assistant"
+                    title="Praful Gupta"
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                  />
                   <span className="badge-online"></span>
                 </div>
                 <div>

@@ -25,10 +25,12 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
 
-        {/* Google AdSense */}
+        {/* Google AdSense - Configured via .env */}
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6386302858967654"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${
+            process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || "ca-pub-6386302858967654"
+          }`}
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />

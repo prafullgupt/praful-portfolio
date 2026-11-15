@@ -1,6 +1,8 @@
 import { createElement } from "react";
 
 const experienceStartYear = 2018;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://praful-gupta-portfolio.vercel.app";
+const adsenseClientId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || "ca-pub-6386302858967654";
 
 export const MetaInfo = {
   // Basic SEO - Targeted for "Praful Gupta" to rank #1 on Google
@@ -11,7 +13,7 @@ export const MetaInfo = {
   description: "Official portfolio of Praful Gupta — Senior Application Developer, Team Leader & Full Stack Web Developer with 8+ years of expertise in React Native, Android, iOS, Next.js, and AI Integration. Explore Praful Gupta's career, projects, and contact info.",
   
   other: {
-    "google-adsense-account": "ca-pub-6386302858967654",
+    "google-adsense-account": adsenseClientId,
   },
   // Keywords — targeted for Google search intent
   keywords: [
@@ -60,30 +62,30 @@ export const MetaInfo = {
   
   // Canonical URL
   alternates: {
-    canonical: "https://praful-gupta-portfolio.vercel.app/",
+    canonical: `${siteUrl}/`,
   },
   
   // Open Graph — Facebook, LinkedIn, WhatsApp, etc.
   openGraph: {
     title: "Praful Gupta | Senior Application & Web Developer | Team Leader",
     description: "Official portfolio of Praful Gupta: Senior Mobile & Web Application Developer & Team Leader with 8+ years experience in React Native, Next.js, and AI solutions.",
-    url: "https://praful-gupta-portfolio.vercel.app/",
+    url: `${siteUrl}/`,
     siteName: "Praful Gupta",
     locale: "en_US",
     type: "profile",
     images: [
       {
-        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
+        url: `${siteUrl}/images/profile.png`,
         width: 1200,
         height: 630,
-        alt: "Praful Gupta - Senior Mobile & Web Developer",
+        alt: "Praful Gupta - Senior Application & Web Developer, Team Leader",
         type: "image/png",
       },
       {
-        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
+        url: `${siteUrl}/images/profile.png`,
         width: 800,
         height: 800,
-        alt: "Praful Gupta - Profile Photo",
+        alt: "Praful Gupta - Senior Mobile & Web Developer Profile Photo",
         type: "image/png",
       },
     ],
@@ -94,7 +96,12 @@ export const MetaInfo = {
     card: "summary_large_image",
     title: "Praful Gupta | Senior Application Developer",
     description: "Senior Application Developer & Team Leader with 8+ years experience building world-class mobile & web applications.",
-    images: ["https://praful-gupta-portfolio.vercel.app/images/profile.png"],
+    images: [
+      {
+        url: `${siteUrl}/images/profile.png`,
+        alt: "Praful Gupta - Senior Mobile & Web Developer",
+      },
+    ],
   },
   
   // Icons — Circular SVG Favicon
@@ -138,11 +145,17 @@ export function StructuredData() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://praful-gupta-portfolio.vercel.app/#person",
+        "@id": `${siteUrl}/#person`,
         name: "Praful Gupta",
         alternateName: ["Prafull Gupta", "prafulgupt", "Prafull Goel"],
-        url: "https://praful-gupta-portfolio.vercel.app/",
-        image: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
+        url: `${siteUrl}/`,
+        image: {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/images/profile.png`,
+          "name": "Praful Gupta",
+          "caption": "Praful Gupta - Senior Application & Web Developer, Team Leader",
+          "description": "Official portrait of Praful Gupta, Senior Mobile & Web Application Developer"
+        },
         jobTitle: "Team Leader & Senior Application Developer",
         worksFor: {
           "@type": "Organization",
@@ -157,7 +170,7 @@ export function StructuredData() {
           addressCountry: "IN",
         },
         email: "mailto:prafullgoel7@gmail.com",
-        telephone: "+91-8057381969",
+        telephone: process.env.NEXT_PUBLIC_OWNER_PHONE || "+91-7417319939",
         sameAs: [
           "https://github.com/prafullgupt",
           "https://linkedin.com/in/prafull-gupto-958633169",
@@ -181,23 +194,33 @@ export function StructuredData() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://praful-gupta-portfolio.vercel.app/#website",
-        url: "https://praful-gupta-portfolio.vercel.app/",
+        "@id": `${siteUrl}/#website`,
+        url: `${siteUrl}/`,
         name: "Praful Gupta Portfolio",
         alternateName: "Praful Gupta Official Website",
         description: "Official portfolio website of Praful Gupta, Senior Mobile & Web Developer.",
         publisher: {
-          "@id": "https://praful-gupta-portfolio.vercel.app/#person",
+          "@id": `${siteUrl}/#person`,
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/images/profile.png`,
+          "name": "Praful Gupta"
         },
         inLanguage: "en",
       },
       {
         "@type": "ProfilePage",
-        "@id": "https://praful-gupta-portfolio.vercel.app/#profilepage",
-        url: "https://praful-gupta-portfolio.vercel.app/",
+        "@id": `${siteUrl}/#profilepage`,
+        url: `${siteUrl}/`,
         name: "Praful Gupta Profile",
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/images/profile.png`,
+          "name": "Praful Gupta"
+        },
         mainEntity: {
-          "@id": "https://praful-gupta-portfolio.vercel.app/#person",
+          "@id": `${siteUrl}/#person`,
         },
       },
     ],

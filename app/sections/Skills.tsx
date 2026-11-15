@@ -1,395 +1,508 @@
 "use client"
 
+import { useState, useRef, useEffect } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/app/context/ThemeContext"
-import { Code2, Wrench, Layers, Languages, TrendingUp, Zap, Sparkles, ChevronDown, ChevronUp } from "lucide-react"
-import { skillCategories } from "@/lib/data";
-import { useRef, useEffect, useState } from "react"
+import { 
+  Code2, 
+  Wrench, 
+  Layers, 
+  Languages, 
+  Sparkles, 
+  Cpu, 
+  Smartphone, 
+  Globe, 
+  Bot, 
+  CheckCircle2, 
+  Search,
+  Zap,
+  TrendingUp,
+  ShieldCheck
+} from "lucide-react"
+import { skillCategories } from "@/lib/data"
 
-// Animated counter for percentage
-function AnimatedCounter({ target, delay = 0 }: { target: number; delay?: number }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true })
+// ============================================
+// REAL 3D TILT CARD COMPONENT WITH SPECULAR GLARE
+// ============================================
+function Tilt3DCard({ 
+  children, 
+  className = "",
+  glowColor = "rgba(59, 130, 246, 0.2)"
+}: { 
+  children: React.ReactNode
+  className?: string
+  glowColor?: string
+}) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [rotateX, setRotateX] = useState(0)
+  const [rotateY, setRotateY] = useState(0)
+  const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 })
 
-  useEffect(() => {
-    if (!isInView) return
-    const timeout = setTimeout(() => {
-      let start = 0
-      const duration = 1200
-      const step = target / (duration / 16)
-      const timer = setInterval(() => {
-        start += step
-        if (start >= target) {
-          setCount(target)
-          clearInterval(timer)
-        } else {
-          setCount(Math.floor(start))
-        }
-      }, 16)
-      return () => clearInterval(timer)
-    }, delay * 1000)
-    return () => clearTimeout(timeout)
-  }, [isInView, target, delay])
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
 
-  return <span ref={ref}>{count}%</span>
-}
+    // Real 3D physics angle calculation
+    const rotX = -((y - centerY) / centerY) * 12
+    const rotY = ((x - centerX) / centerX) * 12
 
-// Animated progress bar with glow effect
-function ProgressBar({ level, color, delay = 0, isDark }: { level: number; color: string; delay?: number; isDark: boolean }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true })
+    setRotateX(rotX)
+    setRotateY(rotY)
+    setGlare({
+      x: (x / rect.width) * 100,
+      y: (y / rect.height) * 100,
+      opacity: 0.2
+    })
+  }
 
-  return (
-    <div className="flex items-center gap-3" ref={ref}>
-      <div className="flex-1 h-3 sm:h-4 bg-gray-200 dark:bg-gray-700/50 rounded-full overflow-hidden relative">
-        {/* Background grid pattern */}
-        {/* <div className="absolute inset-0 opacity-20" style={{
-          backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 8px, ${isDark ? '#fff' : '#000'} 8px, ${isDark ? '#fff' : '#000'} 9px)`
-        }} /> */}
-
-        <motion.div
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${level}%` } : { width: 0 }}
-          transition={{ duration: 1.5, delay: delay, ease: [0.22, 1, 0.36, 1] }}
-          className={`h-full rounded-full ${color} relative overflow-hidden`}
-          style={{
-            boxShadow: isInView ? `0 0 20px ${color.replace('bg-', '').replace('500', '400')}, 0 0 40px ${color.replace('bg-', '').replace('500', '300')}40` : 'none'
-          }}
-        >
-          {/* Shimmer effect */}
-          <motion.div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)',
-            }}
-            animate={{ x: ['-200%', '200%'] }}
-            transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 2, ease: 'easeInOut' }}
-          />
-
-          {/* Top highlight */}
-          <div className="absolute top-0 left-0 right-0 h-[100%] bg-white/20 dark:bg-white rounded-full" />
-        </motion.div>
-      </div>
-      <motion.span
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-        transition={{ duration: 0.5, delay: delay + 0.5 }}
-        className="text-xs sm:text-sm font-bold text-gray-600 dark:text-gray-300 w-12 text-right tabular-nums"
-      >
-        <AnimatedCounter target={level} delay={delay} />
-      </motion.span>
-    </div>
-  )
-}
-
-// Category card with View More functionality
-function CategoryCard({ category, index, darkMode }: { category: typeof skillCategories[0]; index: number; darkMode: boolean }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
-  const [expanded, setExpanded] = useState(false)
-  const INITIAL_COUNT = 5
-  const hasMore = category.skills.length > INITIAL_COUNT
-  const visibleSkills = expanded ? category.skills : category.skills.slice(0, INITIAL_COUNT)
-  const hiddenCount = category.skills.length - INITIAL_COUNT
-  const avg = Math.round(category.skills.reduce((acc, s) => acc + s.level, 0) / category.skills.length)
+  const handleMouseLeave = () => {
+    setRotateX(0)
+    setRotateY(0)
+    setGlare((prev) => ({ ...prev, opacity: 0 }))
+  }
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50, rotateX: 10 }}
-      animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ rotateX, rotateY }}
+      transition={{ type: "spring", stiffness: 350, damping: 25 }}
+      style={{ perspective: 1200, transformStyle: "preserve-3d" }}
+      className={`relative ${className}`}
     >
-      <motion.div
-        layout
-        whileHover={{ y: -8, scale: 1.02 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className={`${category.bgColor} rounded-3xl p-6 sm:p-8 border ${category.borderColor} 
-          hover:shadow-2xl transition-shadow duration-500 relative overflow-hidden group`}
-        style={{ perspective: '1000px' }}
-      >
-        {/* Floating particles on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className={`absolute w-2 h-2 rounded-full ${category.progressColor} opacity-40`}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, (i % 2 === 0 ? 20 : -20), 0],
-                opacity: [0, 0.6, 0],
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                delay: i * 0.3,
-                ease: 'easeInOut',
-              }}
-              style={{
-                left: `${15 + i * 15}%`,
-                bottom: '20%',
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Gradient orb background */}
-        <div className={`absolute -top-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br ${category.color} opacity-5 blur-3xl group-hover:opacity-10 transition-opacity duration-500`} />
-
-        {/* Category Header */}
-        <div className="flex items-center gap-4 mb-6 sm:mb-8 relative z-10">
-          <motion.div
-            whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-            transition={{ duration: 0.5 }}
-            className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${darkMode ? category.darkColor : category.color} 
-              flex items-center justify-center flex-shrink-0 shadow-lg relative overflow-hidden`}
-          >
-            <div className="absolute inset-0 bg-white/10" />
-            <category.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10" />
-          </motion.div>
-          <div>
-            <h3 className={`text-lg sm:text-xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}>
-              {category.title}
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-              {category.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Skills List with Progress Bars */}
-        <div className="space-y-3 sm:space-y-4 relative z-10">
-          <AnimatePresence mode="popLayout">
-            {visibleSkills.map((skill, skillIndex) => (
-              <motion.div
-                key={skill.name}
-                layout
-                initial={{ opacity: 0, x: -30, height: 0 }}
-                animate={{ opacity: 1, x: 0, height: "auto" }}
-                exit={{ opacity: 0, x: -30, height: 0 }}
-                transition={{ delay: skillIndex * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="group/skill"
-              >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className={`text-xs sm:text-sm font-semibold ${darkMode ? "text-gray-200" : "text-gray-700"} 
-                    group-hover/skill:${category.textColor} transition-colors duration-300 flex items-center gap-2`}>
-                    {skill.level >= 95 && (
-                      <motion.span
-                        animate={{ rotate: [0, 15, -15, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                      >
-                        <Zap className="w-3 h-3 text-yellow-500" />
-                      </motion.span>
-                    )}
-                    {skill.name}
-                  </span>
-                </div>
-                <ProgressBar
-                  level={skill.level}
-                  color={darkMode ? category.darkColor.replace("from-", "bg-").split(" ")[0] : category.progressColor}
-                  delay={skillIndex * 0.06}
-                  isDark={darkMode}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* View More / View Less Button */}
-        {hasMore && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-5 sm:mt-6 relative z-10"
-          >
-            <motion.button
-              onClick={() => setExpanded(!expanded)}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full py-3 px-4 rounded-xl border ${category.borderColor} 
-                ${category.bgColor} ${category.textColor} font-semibold text-sm sm:text-base
-                flex items-center justify-center gap-2 transition-all duration-300
-                hover:shadow-md hover:border-opacity-50`}
-            >
-              <AnimatePresence mode="wait">
-                {expanded ? (
-                  <motion.span
-                    key="less"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="flex items-center gap-2"
-                  >
-                    <ChevronUp className="w-4 h-4" />
-                    View Less
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="more"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="flex items-center gap-2"
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                    View More ({hiddenCount} more)
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          </motion.div>
-        )}
-
-        {/* Category Summary with animated ring */}
-        <div className={`mt-5 sm:mt-6 pt-5 border-t ${category.borderColor} flex items-center justify-between relative z-10`}>
-          <div className="flex items-center gap-2">
-            <Sparkles className={`w-4 h-4 ${category.textColor}`} />
-            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
-              Average Proficiency
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="relative w-10 h-10">
-              <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-                <path
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke={darkMode ? "#374151" : "#e5e7eb"}
-                  strokeWidth="3"
-                />
-                <motion.path
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeDasharray={`${avg}, 100`}
-                  className={category.textColor}
-                  initial={{ strokeDasharray: "0, 100" }}
-                  animate={isInView ? { strokeDasharray: `${avg}, 100` } : {}}
-                  transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                />
-              </svg>
-              <span className={`absolute inset-0 flex items-center justify-center text-[10px] font-bold ${category.textColor}`}>
-                {avg}%
-              </span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      {/* Dynamic 3D Glare Light reflection */}
+      <div
+        className="absolute inset-0 pointer-events-none rounded-3xl transition-opacity duration-300 z-30 overflow-hidden"
+        style={{
+          background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,${glare.opacity}), transparent 65%)`
+        }}
+      />
+      {/* Dynamic 3D ambient drop shadow */}
+      <div 
+        className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10 pointer-events-none"
+        style={{ background: glowColor }}
+      />
+      {children}
     </motion.div>
   )
 }
 
-export default function Skills() {
-  const { darkMode } = useTheme()
-  const headerRef = useRef<HTMLDivElement>(null)
-  const headerInView = useInView(headerRef, { once: true })
+// ============================================
+// 3D HOLOGRAPHIC PROGRESS DIAL
+// ============================================
+function Dial3D({ level, color = "#3b82f6", size = 80 }: { level: number; color?: string; size?: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true })
+  const strokeWidth = 7
+  const radius = (size - strokeWidth) / 2
+  const circumference = 2 * Math.PI * radius
+  const strokeDashoffset = circumference - (level / 100) * circumference
 
   return (
-    <section id="skills" className={`py-20 sm:py-28 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} relative overflow-hidden`}>
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+    <div ref={ref} className="relative flex items-center justify-center" style={{ width: size, height: size }}>
+      <svg className="w-full h-full -rotate-90" viewBox={`0 0 ${size} ${size}`}>
+        {/* Track */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          className="text-slate-200 dark:text-slate-800"
+          fill="none"
+        />
+        {/* Progress Arc */}
+        <motion.circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          initial={{ strokeDashoffset: circumference }}
+          animate={isInView ? { strokeDashoffset } : { strokeDashoffset: circumference }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          strokeLinecap="round"
+          fill="none"
+        />
+      </svg>
+      {/* 3D Center Floating Stat */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+        <span className="text-sm font-extrabold text-slate-900 dark:text-white leading-none">
+          {level}%
+        </span>
+      </div>
+    </div>
+  )
+}
+
+// ============================================
+// MAIN TECHNICAL SKILLS SECTION
+// ============================================
+export default function Skills() {
+  const { darkMode } = useTheme()
+  const [selectedCategory, setSelectedCategory] = useState<string>("all")
+  const [searchQuery, setSearchQuery] = useState<string>("")
+
+  // Filter skills based on category and search query
+  const filteredCategories = skillCategories.map((cat) => {
+    if (selectedCategory !== "all" && cat.title !== selectedCategory) {
+      return null
+    }
+    const filteredSkills = cat.skills.filter((s) => 
+      s.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    if (filteredSkills.length === 0) return null
+    return { ...cat, skills: filteredSkills }
+  }).filter(Boolean) as typeof skillCategories
+
+  // Key Pillar Highlights
+  const corePillars = [
+    {
+      title: "Mobile Architecture",
+      badge: "Flagship Expertise",
+      rating: 96,
+      icon: Smartphone,
+      gradient: "from-blue-600 via-indigo-600 to-cyan-500",
+      glow: "rgba(59, 130, 246, 0.35)",
+      skills: ["React Native", "Android (Java/Kotlin)", "iOS (Xcode)", "Clean MVVM"],
+      desc: "Cross-platform enterprise native apps with high-fps rendering and background sync."
+    },
+    {
+      title: "Modern Web & Cloud",
+      badge: "High Scalability",
+      rating: 93,
+      icon: Globe,
+      gradient: "from-purple-600 via-pink-600 to-rose-500",
+      glow: "rgba(168, 85, 247, 0.35)",
+      skills: ["Next.js 15", "React.js", "TypeScript", "REST APIs"],
+      desc: "Full-stack SSR web applications optimized for Core Web Vitals and top SEO ranking."
+    },
+    {
+      title: "AI-Powered Solutions",
+      badge: "Modern Edge",
+      rating: 95,
+      icon: Bot,
+      gradient: "from-emerald-500 via-teal-600 to-cyan-600",
+      glow: "rgba(16, 185, 129, 0.35)",
+      skills: ["Cursor AI", "Claude AI", "ChatGPT APIs", "AI Prompting"],
+      desc: "Deep integration of AI models and tools to supercharge engineering velocity and app features."
+    },
+    {
+      title: "Release & DevOps",
+      badge: "Production Ready",
+      rating: 94,
+      icon: Cpu,
+      gradient: "from-amber-500 via-orange-600 to-red-500",
+      glow: "rgba(245, 158, 11, 0.35)",
+      skills: ["Play Console", "App Store Connect", "CI/CD Git", "Crashlytics"],
+      desc: "Complete end-to-end publishing, release management, and zero-crash production monitoring."
+    }
+  ]
+
+  return (
+    <section id="skills" className="py-20 sm:py-28 bg-slate-50 dark:bg-gray-900 transition-colors duration-500 relative overflow-hidden">
+      {/* 3D Background Geometric Mesh */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, #6366f1 1.2px, transparent 0)`,
+            backgroundSize: '48px 48px'
+          }}
+        />
+      </div>
+
+      {/* Floating 3D Ambient Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 -right-24 w-[500px] h-[500px] bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-[120px]" />
+        <div className="absolute -bottom-24 left-1/3 w-[600px] h-[600px] bg-emerald-500/10 dark:bg-emerald-500/10 rounded-full blur-[140px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
+        
+        {/* Header with 3D Depth */}
         <motion.div
-          ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-14 sm:mb-20"
         >
           <motion.div
             initial={{ scale: 0 }}
-            animate={headerInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-100 dark:bg-blue-500/10 
-              text-blue-600 dark:text-blue-400 text-sm font-semibold mb-6 border border-blue-200 dark:border-blue-500/20"
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/70 border border-blue-200/80 dark:border-blue-800/60 text-blue-600 dark:text-blue-400 text-xs sm:text-sm font-bold mb-4 shadow-sm"
           >
-            <TrendingUp className="w-4 h-4" />
-            <span>My Expertise</span>
+            <Sparkles size={14} className="text-blue-500 animate-spin-slow" />
+            <span>Multi-Disciplinary Stack</span>
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-5 ${darkMode ? "text-white" : "text-gray-900"}`}
-          >
-            Technical{" "}
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Skills
-            </span>
-          </motion.h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">
+            Technical <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Expertise & Skills</span>
+          </h2>
 
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={headerInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="w-20 sm:w-24 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"
-          />
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="h-0.5 w-12 bg-gradient-to-r from-transparent to-blue-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+            <div className="h-0.5 w-24 bg-gradient-to-r from-blue-500/60 via-purple-500/60 to-blue-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+            <div className="h-0.5 w-12 bg-gradient-to-l from-transparent to-purple-500/60" />
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={headerInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-5 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg px-4"
-          >
-            A comprehensive toolkit built over years of hands-on mobile & web development experience
-          </motion.p>
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+            Handcrafted with 8+ years of production experience across native mobile systems, high-traffic web architectures, and modern AI engineering.
+          </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {skillCategories.map((category, index) => (
-            <CategoryCard key={category.title} category={category} index={index} darkMode={darkMode} />
-          ))}
-        </div>
+        {/* ========================================================
+            PART 1: 3D HOLOGRAPHIC CORE SUPERPOWER CARDS
+        ======================================================== */}
+        <div className="mb-16 sm:mb-20">
+          <div className="flex items-center justify-between mb-6 px-1">
+            <div className="flex items-center gap-2">
+              <Zap className="w-5 h-5 text-amber-500" />
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                Core Engineering Pillars
+              </h3>
+            </div>
+            <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+              3D Interactive
+            </span>
+          </div>
 
-        {/* Overall Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className={`mt-14 sm:mt-20 p-8 sm:p-10 rounded-3xl border ${darkMode ? "bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" : "bg-gradient-to-r from-blue-100 to-sky-300"} 
-            text-center relative overflow-hidden`}
-        >
-          <div className={`absolute inset-0 bg-gradient-to-r ${darkMode ? 'from-blue-500/5 to-purple-500/5' : 'from-blue-50 to-purple-50'} opacity-50`} />
-
-          <h3 className={`text-xl sm:text-2xl font-bold mb-6 ${darkMode ? "text-white" : "text-gray-900"} relative z-10`}>
-            Overall Skill Distribution
-          </h3>
-
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 relative z-10">
-            {skillCategories.map((cat, i) => {
-              const avg = Math.round(cat.skills.reduce((acc, s) => acc + s.level, 0) / cat.skills.length)
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {corePillars.map((pillar, idx) => {
+              const Icon = pillar.icon
               return (
-                <motion.div
-                  key={cat.title}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className={`px-5 py-3 rounded-2xl ${cat.bgColor} border ${cat.borderColor} cursor-default`}
+                <Tilt3DCard 
+                  key={pillar.title} 
+                  glowColor={pillar.glow}
+                  className="group rounded-3xl"
                 >
-                  <div className="flex items-center gap-2">
-                    <cat.icon className={`w-4 h-4 ${cat.textColor}`} />
-                    <span className={`text-sm font-bold ${cat.textColor}`}>
-                      {cat.title}: {avg}%
-                    </span>
-                  </div>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1, duration: 0.5 }}
+                    className="h-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-6 sm:p-7 border border-slate-200/80 dark:border-slate-700/80 shadow-xl shadow-slate-200/40 dark:shadow-none flex flex-col justify-between transition-all duration-300"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    <div>
+                      {/* Top Row with 3D Icon and 3D Progress Dial */}
+                      <div className="flex items-center justify-between mb-5" style={{ transform: "translateZ(30px)" }}>
+                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.gradient} flex items-center justify-center text-white shadow-lg shadow-blue-500/25`}>
+                          <Icon size={26} />
+                        </div>
+                        <Dial3D level={pillar.rating} color="#3b82f6" size={68} />
+                      </div>
+
+                      {/* Title & Badge */}
+                      <div style={{ transform: "translateZ(20px)" }}>
+                        <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">
+                          {pillar.badge}
+                        </span>
+                        <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {pillar.title}
+                        </h4>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                          {pillar.desc}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Skill Pills inside Card */}
+                    <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-700/60" style={{ transform: "translateZ(25px)" }}>
+                      <div className="flex flex-wrap gap-1.5">
+                        {pillar.skills.map((s) => (
+                          <span 
+                            key={s} 
+                            className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700/60 text-slate-700 dark:text-slate-300"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </Tilt3DCard>
               )
             })}
           </div>
+        </div>
+
+        {/* ========================================================
+            PART 2: INTERACTIVE CATEGORY MATRIX & 3D SKILL CHIPS
+        ======================================================== */}
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200/80 dark:border-slate-700 shadow-2xl shadow-slate-200/50 dark:shadow-none">
+          
+          {/* Controls Bar: Search & Filter Tabs */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-700/80">
+            {/* Filter Pills */}
+            <div className="flex items-center gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 scrollbar-none">
+              <button
+                onClick={() => setSelectedCategory("all")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                  selectedCategory === "all"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 scale-105"
+                    : "bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                }`}
+              >
+                All Skills
+              </button>
+              {skillCategories.map((c) => (
+                <button
+                  key={c.title}
+                  onClick={() => setSelectedCategory(c.title)}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                    selectedCategory === c.title
+                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 scale-105"
+                      : "bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                  }`}
+                >
+                  {c.title}
+                </button>
+              ))}
+            </div>
+
+            {/* Quick Live Search Filter */}
+            <div className="relative w-full sm:w-72 flex-shrink-0">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search skill (e.g. React, Kotlin)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              />
+            </div>
+          </div>
+
+          {/* Categories Grid */}
+          <div className="space-y-10">
+            {filteredCategories.map((cat, catIdx) => {
+              const Icon = cat.icon
+              return (
+                <div key={cat.title}>
+                  {/* Category Section Title */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                      <Icon size={18} />
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                        {cat.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        {cat.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Skills Grid with 3D Chips */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-4">
+                    {cat.skills.map((skill, sIdx) => {
+                      const isHigh = skill.level >= 90
+                      return (
+                        <motion.div
+                          key={skill.name}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: sIdx * 0.03 }}
+                          whileHover={{ y: -4, scale: 1.02 }}
+                          className="p-4 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 group"
+                        >
+                          <div className="flex items-center justify-between gap-2 mb-2.5">
+                            <span className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                              {skill.name}
+                            </span>
+                            <span className={`text-[11px] font-extrabold px-2 py-0.5 rounded-md ${
+                              isHigh 
+                                ? "bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border border-blue-200/50 dark:border-blue-800/50" 
+                                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+                            }`}>
+                              {skill.level}%
+                            </span>
+                          </div>
+
+                          {/* 3D Energy Progress Bar with Shimmer */}
+                          <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden relative">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.2, delay: sIdx * 0.04, ease: "easeOut" }}
+                              className="h-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 relative overflow-hidden"
+                            >
+                              {/* Shimmer animation */}
+                              <motion.div
+                                animate={{ x: ["-100%", "200%"] }}
+                                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", repeatDelay: 1.5 }}
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                              />
+                            </motion.div>
+                          </div>
+
+                          {/* Level Tag */}
+                          <div className="mt-2.5 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500">
+                            <span>{skill.level >= 95 ? "Mastery" : skill.level >= 90 ? "Expert" : "Proficient"}</span>
+                            <span className="flex items-center gap-1">
+                              <CheckCircle2 size={11} className="text-emerald-500" /> Production
+                            </span>
+                          </div>
+                        </motion.div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* ========================================================
+            PART 3: 3D TECH CLUSTER / MARQUEE OF EXCELLENCE
+        ======================================================== */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-14 sm:mt-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 text-white shadow-2xl shadow-blue-600/20 relative overflow-hidden text-center"
+        >
+          <div className="absolute -right-10 -bottom-10 w-44 h-44 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h3 className="text-xl sm:text-2xl font-extrabold mb-2">
+              Continuous Evolution in Modern Software
+            </h3>
+            <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed mb-6">
+              Combining 8+ years of solid object-oriented engineering with cutting-edge AI-assisted workflows to build high-performance software at lightning speed.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5">
+              {[
+                "React Native", "Android Java/Kotlin", "Next.js 15", "TypeScript", 
+                "RESTful Microservices", "Firebase", "App Store Connect", "Play Console",
+                "Cursor AI", "Claude 3.7", "Prompt Engineering", "Full-Stack Web"
+              ].map((pill) => (
+                <span
+                  key={pill}
+                  className="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-xs font-bold text-white border border-white/20 hover:bg-white/25 transition-colors cursor-default"
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
+          </div>
         </motion.div>
+
       </div>
     </section>
   )

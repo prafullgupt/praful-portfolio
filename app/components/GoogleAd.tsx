@@ -31,7 +31,8 @@ export default function GoogleAd({
         }
     }, [])
 
-    const client = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "ca-pub-6386302858967654"
+    // Read Publisher client ID from .env (fallback to default account if not defined)
+    const client = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "ca-pub-6386302858967654"
 
     if (!client) {
         return null

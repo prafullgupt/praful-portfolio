@@ -3,6 +3,7 @@
 import { useState, useEffect, MouseEvent } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Phone, Mail, Sun, Moon, Github, Linkedin, FileText } from "lucide-react"
+import Image from "next/image"
 import { personalInfo, navLinks } from "@/lib/data"
 import { useTheme } from "@/app/context/ThemeContext"
 import { useAnalytics } from '../hooks/useAnalytics';
@@ -86,12 +87,23 @@ export default function Navbar() {
             {/* Logo */}
             <motion.a
               href="/"
-              className="flex items-center gap-2 text-xl sm:text-2xl font-bold"
+              className="flex items-center gap-2.5 text-xl sm:text-2xl font-bold"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               onClick={(e) => handleNavClick(e, "/")}
             >
+              <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-blue-500/40 flex-shrink-0 shadow-sm">
+                <Image
+                  src="/images/profile.png"
+                  alt="Praful Gupta - Senior Mobile & Web Developer"
+                  title="Praful Gupta"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="36px"
+                />
+              </div>
               <span className={`bg-gradient-to-r ${isLightScrolled
                 ? "from-blue-600 via-purple-600 to-pink-600"
                 : "from-blue-400 via-purple-400 to-pink-400"} bg-clip-text text-transparent transition-all duration-500`}>
