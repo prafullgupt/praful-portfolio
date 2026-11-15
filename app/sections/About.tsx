@@ -243,14 +243,17 @@ export default function About() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6" style={{ transform: "translateZ(25px)" }}>
                     <div className="flex items-center gap-3">
                       <figure className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border-2 border-blue-500/40 flex-shrink-0 shadow-md">
-                        <Image
-                          src="/images/PrafulGupta.png"
-                          alt="Praful Gupta (प्रफुल गुप्ता) - Team Leader & Senior Application Developer"
-                          title="Praful Gupta (प्रफुल गुप्ता)"
-                          fill
-                          className="object-cover"
-                          sizes="56px"
-                        />
+                        <picture>
+                          <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                          <img
+                            src="/images/PrafulGupta.png"
+                            alt="Praful Gupta (प्रफुल गुप्ता) - Team Leader & Senior Application Developer"
+                            title="Praful Gupta (प्रफुल गुप्ता)"
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover"
+                          />
+                        </picture>
                         <figcaption className="sr-only">Praful Gupta (प्रफुल गुप्ता)</figcaption>
                       </figure>
                       <div>

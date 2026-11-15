@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
       images: [
         `${baseUrl}/images/PrafulGupta.png`,
+        `${baseUrl}/images/PrafulGupta.webp`,
         `${baseUrl}/images/logo.png`,
       ],
     },

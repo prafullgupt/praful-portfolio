@@ -16,14 +16,17 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-3">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-blue-400/50 flex-shrink-0 shadow-sm">
-              <Image
-                src="/images/PrafulGupta.png"
-                alt="Praful Gupta (प्रफुल गुप्ता) - Official Portfolio"
-                title="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
-                fill
-                className="object-cover"
-                sizes="32px"
-              />
+              <picture>
+                <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                <img
+                  src="/images/PrafulGupta.png"
+                  alt="Praful Gupta (प्रफुल गुप्ता) - Official Portfolio"
+                  title="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
             </div>
             <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
               &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.

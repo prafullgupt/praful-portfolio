@@ -94,15 +94,17 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, "/")}
             >
               <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-blue-500/40 flex-shrink-0 shadow-sm">
-                <Image
-                  src="/images/PrafulGupta.png"
-                  alt="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
-                  title="Praful Gupta (प्रफुल गुप्ता)"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="36px"
-                />
+                <picture>
+                  <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                  <img
+                    src="/images/PrafulGupta.png"
+                    alt="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
+                    title="Praful Gupta (प्रफुल गुप्ता)"
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
               </div>
               <span className={`bg-gradient-to-r ${isLightScrolled
                 ? "from-blue-600 via-purple-600 to-pink-600"
