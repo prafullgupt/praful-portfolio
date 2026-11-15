@@ -95,9 +95,11 @@ export default function Navbar() {
             >
               <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-blue-500/40 flex-shrink-0 shadow-sm">
                 <picture>
-                  <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                  <source type="image/webp" srcSet="/images/PrafulGupta-96.webp" />
                   <img
-                    src="/images/PrafulGupta.png"
+                    src="/images/PrafulGupta-96.png"
+                    width={36}
+                    height={36}
                     alt="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
                     title="Praful Gupta (प्रफुल गुप्ता)"
                     loading="eager"

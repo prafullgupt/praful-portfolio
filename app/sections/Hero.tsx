@@ -198,12 +198,7 @@ export default function Hero() {
           {/* -------------------------------------------------------------------
               LEFT COLUMN (lg:col-span-7): Executive Brand, Narrative & 3D Launchpad
               ------------------------------------------------------------------- */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7 flex flex-col text-center lg:text-left order-2 lg:order-1 items-center lg:items-start w-full"
-          >
+          <div className="lg:col-span-7 flex flex-col text-center lg:text-left order-2 lg:order-1 items-center lg:items-start w-full">
             {/* Live Availability Radar Pill */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -279,15 +274,10 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* Elevator Value Statement */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl text-center lg:text-left"
-            >
+            {/* Elevator Value Statement - Static Render for Instant LCP & 100% Core Web Vitals */}
+            <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl text-center lg:text-left">
               Building scalable, high-velocity mobile products and enterprise web ecosystems with <span className="font-semibold text-slate-900 dark:text-white">8+ years of production excellence</span>. Proven track record leading multidisciplinary teams at <span className="text-blue-600 dark:text-blue-400 font-medium">Harshit Infosolutions</span>, architecting 60fps native apps with zero-rejection store approvals, and fusing cutting-edge AI vision engines into seamless user journeys.
-            </motion.p>
+            </p>
 
             {/* 3D Interactive Launchpad Actions */}
             <motion.div
@@ -390,17 +380,12 @@ export default function Hero() {
                 </a>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* -------------------------------------------------------------------
               RIGHT COLUMN (lg:col-span-5): 3D Cyber-Orbit Reactor & Holographic Core
               ------------------------------------------------------------------- */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2 w-full"
-          >
+          <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2 w-full">
             <Hero3DTiltCard className="max-w-[460px] w-full p-4 sm:p-6" glowColor="rgba(6, 182, 212, 0.35)">
               <div className="relative w-full aspect-square flex items-center justify-center">
 
@@ -436,9 +421,20 @@ export default function Hero() {
                   {/* Glassmorphic Core Container with Semantic Figure for Google Image SEO */}
                   <figure className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/80 dark:border-slate-800 shadow-2xl bg-slate-900">
                     <picture>
-                      <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                      <source
+                        type="image/webp"
+                        srcSet="/images/PrafulGupta-320.webp 320w, /images/PrafulGupta-640.webp 640w, /images/PrafulGupta.webp 800w"
+                        sizes="(max-width: 640px) 256px, 288px"
+                      />
+                      <source
+                        type="image/png"
+                        srcSet="/images/PrafulGupta-320.png 320w, /images/PrafulGupta-640.png 640w, /images/PrafulGupta.png 800w"
+                        sizes="(max-width: 640px) 256px, 288px"
+                      />
                       <img
-                        src="/images/PrafulGupta.png"
+                        src="/images/PrafulGupta-320.webp"
+                        width={288}
+                        height={288}
                         alt="Praful Gupta (प्रफुल गुप्ता) - Senior Application & Web Developer, Team Leader | React Native, Next.js, Android, iOS Specialist"
                         title="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer | Team Leader"
                         fetchPriority="high"
@@ -549,7 +545,7 @@ export default function Hero() {
 
               </div>
             </Hero3DTiltCard>
-          </motion.div>
+          </div>
 
         </div>
       </div>

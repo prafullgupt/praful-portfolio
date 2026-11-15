@@ -347,10 +347,10 @@ export default function Skills() {
           {/* Controls Bar: Search & Filter Tabs */}
           <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-700/80">
             {/* Filter Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 scrollbar-none">
+            <div className="flex items-center gap-3 overflow-x-auto w-full lg:w-auto py-1 scrollbar-none">
               <button
                 onClick={() => setSelectedCategory("all")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                className={`min-h-[36px] px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap inline-flex items-center justify-center transition-all duration-300 ${
                   selectedCategory === "all"
                     ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 scale-105"
                     : "bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
@@ -362,7 +362,7 @@ export default function Skills() {
                 <button
                   key={c.title}
                   onClick={() => setSelectedCategory(c.title)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                  className={`min-h-[36px] px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap inline-flex items-center justify-center transition-all duration-300 ${
                     selectedCategory === c.title
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/25 scale-105"
                       : "bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200"

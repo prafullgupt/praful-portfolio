@@ -244,9 +244,11 @@ export default function About() {
                     <div className="flex items-center gap-3">
                       <figure className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border-2 border-blue-500/40 flex-shrink-0 shadow-md">
                         <picture>
-                          <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                          <source type="image/webp" srcSet="/images/PrafulGupta-96.webp" />
                           <img
-                            src="/images/PrafulGupta.png"
+                            src="/images/PrafulGupta-96.png"
+                            width={56}
+                            height={56}
                             alt="Praful Gupta (प्रफुल गुप्ता) - Team Leader & Senior Application Developer"
                             title="Praful Gupta (प्रफुल गुप्ता)"
                             loading="lazy"

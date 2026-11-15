@@ -17,9 +17,11 @@ export default function Footer() {
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-3">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-blue-400/50 flex-shrink-0 shadow-sm">
               <picture>
-                <source type="image/webp" srcSet="/images/PrafulGupta.webp" />
+                <source type="image/webp" srcSet="/images/PrafulGupta-96.webp" />
                 <img
-                  src="/images/PrafulGupta.png"
+                  src="/images/PrafulGupta-96.png"
+                  width={32}
+                  height={32}
                   alt="Praful Gupta (प्रफुल गुप्ता) - Official Portfolio"
                   title="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
                   loading="lazy"
