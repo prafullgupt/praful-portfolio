@@ -23,6 +23,7 @@ export default function RootLayout({
       <head>
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="google60d5871884da3454" />
+        <meta name="google-site-verification" content="Pm8OWsSbTVBy-y-45hYhCUhRqAUshPTa4p8qyfykuOY" />
 
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -15,10 +15,14 @@ export const MetaInfo = {
   
   other: {
     "google-adsense-account": adsenseClientId,
+    "google-site-verification": "Pm8OWsSbTVBy-y-45hYhCUhRqAUshPTa4p8qyfykuOY",
   },
 
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google60d5871884da3454",
+    google: [
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google60d5871884da3454",
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION_DOMAIN || "Pm8OWsSbTVBy-y-45hYhCUhRqAUshPTa4p8qyfykuOY"
+    ],
   },
 
   // Keywords — targeted for Google English & Hindi search queries
