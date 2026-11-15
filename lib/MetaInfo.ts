@@ -11,7 +11,7 @@ export const MetaInfo = {
     default: "Praful Gupta (प्रफुल गुप्ता) | Senior Application & Web Developer | Team Leader",
     template: "%s | Praful Gupta (प्रफुल गुप्ता)",
   },
-  description: "Official portfolio of Praful Gupta (प्रफुल गुप्ता) — Senior Application Developer, Team Leader & Mobile/Web Architect with 8+ years of expertise in React Native, Android, iOS, Next.js, and Multimodal AI Integration. Explore Praful Gupta's career, featured apps, open-source repositories, and direct contact details.",
+  description: "Official portfolio of Praful Gupta (प्रफुल गुप्ता) — Senior Application Developer & Team Leader with 8+ years of experience in React Native, Android, iOS & AI.",
   
   other: {
     "google-adsense-account": adsenseClientId,
