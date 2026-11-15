@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://adsense.google.com https://*.google.com https://*.google.co.in https://*.doubleclick.net https://*.googlesyndication.com;"
+        }
+      ]
+    }
+  ]
+}
