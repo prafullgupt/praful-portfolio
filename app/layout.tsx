@@ -45,35 +45,17 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
 
-        {/* Google AdSense - Smart user-interaction loading to guarantee 100% Performance & zero 3rd-party cookie blocking */}
-        <Script
-          id="adsense-smart-loader"
-          strategy="afterInteractive"
+        {/* Google AdSense Official Script */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${
+            process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || "ca-pub-6386302858967654"
+          }`}
+          crossOrigin="anonymous"
+        ></script>
+        <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var loaded = false;
-                function loadAdSense() {
-                  if (loaded) return;
-                  loaded = true;
-                  ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function(ev) {
-                    window.removeEventListener(ev, loadAdSense, { passive: true });
-                  });
-                  window.adsbygoogle = window.adsbygoogle || [];
-                  window.adsbygoogle.requestNonPersonalizedAds = 1;
-                  var s = document.createElement('script');
-                  s.async = true;
-                  s.crossOrigin = 'anonymous';
-                  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${
-                    process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || "ca-pub-6386302858967654"
-                  }';
-                  document.head.appendChild(s);
-                }
-                ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function(ev) {
-                  window.addEventListener(ev, loadAdSense, { passive: true, once: true });
-                });
-              })();
-            `,
+            __html: `window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.requestNonPersonalizedAds = 1;`,
           }}
         />
       </head>
