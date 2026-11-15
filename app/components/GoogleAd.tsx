@@ -31,7 +31,7 @@ export default function GoogleAd({
         }
     }, [])
 
-    const client = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+    const client = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "ca-pub-6386302858967654"
 
     if (!client) {
         return null
@@ -49,9 +49,6 @@ export default function GoogleAd({
                 data-ad-format={format}
                 data-full-width-responsive={responsive ? "true" : "false"}
             />
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({ });
-            </script>
         </div>
     )
 }

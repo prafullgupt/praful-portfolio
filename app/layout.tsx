@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 // @ts-ignore
 import "./globals.css"
 
@@ -11,8 +10,6 @@ import AnalyticsProvider from "@/app/components/AnalyticsProvider"
 import { MetaInfo, StructuredData } from "@/lib/MetaInfo"
 
 import Script from "next/script"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = MetaInfo as Metadata
 
@@ -33,7 +30,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={inter.className}>
+      <body className="font-sans antialiased">
         <ThemeProvider>
           <StructuredData />
 
