@@ -18,7 +18,7 @@ export const MetaInfo = {
   },
 
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google60d5871884da3454",
   },
 
   // Keywords — targeted for Google English & Hindi search queries
