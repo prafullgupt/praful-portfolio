@@ -1,34 +1,42 @@
 import { createElement } from "react";
 
-const experienceStartYear = 2016;
+const experienceStartYear = 2018;
 
 export const MetaInfo = {
-  // Basic SEO
+  // Basic SEO - Targeted for "Praful Gupta" to rank #1 on Google
   title: {
-    default: "Praful Gupta | Senior Mobile & Web Developer",
+    default: "Praful Gupta | Senior Application & Web Developer | Team Leader",
     template: "%s | Praful Gupta",
   },
-  description: "Senior Application Developer with 8+ years of experience in React Native, Android, Next.js, and AI integration. Building world-class mobile and web applications.",
+  description: "Official portfolio of Praful Gupta — Senior Application Developer, Team Leader & Full Stack Web Developer with 8+ years of expertise in React Native, Android, iOS, Next.js, and AI Integration. Explore Praful Gupta's career, projects, and contact info.",
   
   other: {
     "google-adsense-account": "ca-pub-6386302858967654",
   },
-  // Keywords — comprehensive and targeted
+  // Keywords — targeted for Google search intent
   keywords: [
     "Praful Gupta",
-    "React Native Developer",
-    "Android Developer",
-    "Next.js Developer",
-    "Mobile App Developer",
-    "Full Stack Developer",
-    "Team Leader",
-    "Senior Application Developer",
-    "Cross Platform Developer",
-    "UI/UX Developer",
-    "JavaScript Developer",
-    "TypeScript Developer",
-    "React Developer",
-    "App Development India",
+    "Prafull Gupta",
+    "Praful Gupta Developer",
+    "Praful Gupta Portfolio",
+    "Praful Gupta React Native",
+    "Praful Gupta Android Developer",
+    "Praful Gupta Team Leader",
+    "Praful Gupta Meerut",
+    "Praful Gupta Noida",
+    "Praful Gupta Harshit Infosolutions",
+    "prafulgupt",
+    "prafullgoel7",
+    "Praful Gupta Senior Application Developer",
+    "React Native Developer India",
+    "Senior Web Developer Praful Gupta",
+    "Full Stack Developer Praful Gupta",
+    "Mobile App Developer Praful Gupta",
+    "AI App Developer Praful Gupta",
+    "KetoBalanced Praful Gupta",
+    "FastBetter Praful Gupta",
+    "YogaRise Praful Gupta",
+    "Calmate AI Praful Gupta",
   ],
   
   // Authors & Creators
@@ -52,30 +60,30 @@ export const MetaInfo = {
   
   // Canonical URL
   alternates: {
-    canonical: "https://praful-gupta-portfolio.vercel.app/", // Apna actual domain daal do
+    canonical: "https://praful-gupta-portfolio.vercel.app/",
   },
   
   // Open Graph — Facebook, LinkedIn, WhatsApp, etc.
   openGraph: {
-    title: "Praful Gupta | Senior Mobile & Web Developer",
-    description: `${new Date().getFullYear() - experienceStartYear}+ years of experience building world-class mobile and web applications with React Native, Next.js, and AI integration.`,
-    url: "https://praful-gupta-portfolio.vercel.app/", // Apna domain
-    siteName: "Praful Gupta Portfolio",
+    title: "Praful Gupta | Senior Application & Web Developer | Team Leader",
+    description: "Official portfolio of Praful Gupta: Senior Mobile & Web Application Developer & Team Leader with 8+ years experience in React Native, Next.js, and AI solutions.",
+    url: "https://praful-gupta-portfolio.vercel.app/",
+    siteName: "Praful Gupta",
     locale: "en_US",
-    type: "website",
+    type: "profile",
     images: [
       {
-        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png", // 1200x630 recommended
+        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
         width: 1200,
         height: 630,
         alt: "Praful Gupta - Senior Mobile & Web Developer",
         type: "image/png",
       },
       {
-        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png", // 1:1 for WhatsApp
+        url: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
         width: 800,
         height: 800,
-        alt: "Praful Gupta - Senior Mobile & Web Developer",
+        alt: "Praful Gupta - Profile Photo",
         type: "image/png",
       },
     ],
@@ -84,50 +92,37 @@ export const MetaInfo = {
   // Twitter / X Cards
   twitter: {
     card: "summary_large_image",
-    title: "Praful Gupta | Senior Mobile & Web Developer",
-    description: `${new Date().getFullYear() - experienceStartYear}+ years of experience building world-class mobile and web applications.`,
-    creator: "@yourTwitterHandle", // Apna Twitter handle daal do
-    images: ["https://praful-gupta-portfolio.vercel.app/images/logo.png"],
+    title: "Praful Gupta | Senior Application Developer",
+    description: "Senior Application Developer & Team Leader with 8+ years experience building world-class mobile & web applications.",
+    images: ["https://praful-gupta-portfolio.vercel.app/images/profile.png"],
   },
   
-  // Icons — multiple sizes for all devices
+  // Icons — Circular SVG Favicon
   icons: {
     icon: [
-      { url: "/images/profile.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/images/profile.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: ["/images/profile.png"],
+    shortcut: ["/favicon.svg"],
     apple: [
-      { url: "/images/profile.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/images/profile.png",
-        color: "#5bbad5",
-      },
+      { url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" },
     ],
   },
   
-  // Manifest for PWA
   manifest: "/manifest.json",
 
-  
-  // Additional metadata
   category: "technology",
   classification: "Portfolio, Software Development, Mobile Development",
   referrer: "origin-when-cross-origin",
   applicationName: "Praful Gupta Portfolio",
   generator: "Next.js",
   
-  // Apple specific
   appleWebApp: {
     capable: true,
     title: "Praful Gupta",
     statusBarStyle: "black-translucent",
   },
   
-  // Format detection
   formatDetection: {
     telephone: true,
     date: true,
@@ -135,71 +130,81 @@ export const MetaInfo = {
     email: true,
     url: true,
   },
-  
-  // App links (iOS/Android deep linking)
-  itunes: {
-    appId: "your-app-id", // Agar app hai to
-  },
-  appLinks: {
-    ios: {
-      url: "https://praful-gupta-portfolio.vercel.app/",
-      app_store_id: "your-app-id",
-    },
-    android: {
-      package: "com.yourapp.package",
-      url: "https://praful-gupta-portfolio.vercel.app/",
-    },
-    web: {
-      url: "https://praful-gupta-portfolio.vercel.app/",
-      should_fallback: true,
-    },
-  },
-  
-  // Archives & Assets
-  archives: ["https://praful-gupta-portfolio.vercel.app/blog"], // Agar blog hai to
-  assets: ["https://praful-gupta-portfolio.vercel.app"],
-  bookmarks: ["https://praful-gupta-portfolio.vercel.app"],
 }
 
 export function StructuredData() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Praful Gupta",
-    url: "https://praful-gupta-portfolio.vercel.app/",
-    image: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
-    sameAs: [
-      "https://github.com/prafullgupt",
-      "https://www.linkedin.com/in/prafull-gupta-958633169/",
-      // "https://twitter.com/yourhandle",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://praful-gupta-portfolio.vercel.app/#person",
+        name: "Praful Gupta",
+        alternateName: ["Prafull Gupta", "prafulgupt", "Prafull Goel"],
+        url: "https://praful-gupta-portfolio.vercel.app/",
+        image: "https://praful-gupta-portfolio.vercel.app/images/profile.png",
+        jobTitle: "Team Leader & Senior Application Developer",
+        worksFor: {
+          "@type": "Organization",
+          name: "Harshit Infosolutions Pvt. Ltd.",
+          url: "https://harshitinfosolutions.com/",
+        },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Meerut",
+          addressRegion: "Uttar Pradesh",
+          postalCode: "250342",
+          addressCountry: "IN",
+        },
+        email: "mailto:prafullgoel7@gmail.com",
+        telephone: "+91-8057381969",
+        sameAs: [
+          "https://github.com/prafullgupt",
+          "https://linkedin.com/in/prafull-gupto-958633169",
+        ],
+        description: "Praful Gupta is a Senior Application Developer & Team Leader with 8+ years of software engineering experience specializing in React Native, Android, Next.js, and AI integration.",
+        knowsAbout: [
+          "React Native",
+          "Android Development",
+          "Next.js",
+          "React.js",
+          "Mobile Application Development",
+          "Cross-Platform App Development",
+          "AI Integration",
+          "iOS Development",
+          "Team Leadership",
+          "Full Stack Web Development",
+          "Kotlin",
+          "Java",
+          "TypeScript",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://praful-gupta-portfolio.vercel.app/#website",
+        url: "https://praful-gupta-portfolio.vercel.app/",
+        name: "Praful Gupta Portfolio",
+        alternateName: "Praful Gupta Official Website",
+        description: "Official portfolio website of Praful Gupta, Senior Mobile & Web Developer.",
+        publisher: {
+          "@id": "https://praful-gupta-portfolio.vercel.app/#person",
+        },
+        inLanguage: "en",
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://praful-gupta-portfolio.vercel.app/#profilepage",
+        url: "https://praful-gupta-portfolio.vercel.app/",
+        name: "Praful Gupta Profile",
+        mainEntity: {
+          "@id": "https://praful-gupta-portfolio.vercel.app/#person",
+        },
+      },
     ],
-    jobTitle: "Senior Application Developer",
-    description: "Senior Application Developer with 8+ years of experience in React Native, Android, Next.js, and AI integration.",
-    knowsAbout: [
-      "React Native",
-      "Android Development",
-      "Next.js",
-      "React",
-      "TypeScript",
-      "JavaScript",
-      "Mobile App Development",
-      "AI Integration",
-      "Team Leadership",
-    ],
-    // alumniOf: {
-    //   "@type": "EducationalOrganization",
-    //   name: "Your University/College Name",
-    // },
-    // address: {
-    //   "@type": "PostalAddress",
-    //   addressLocality: "Your City",
-    //   addressRegion: "Your State",
-    //   addressCountry: "IN",
-    // },
-  }
+  };
 
   return createElement("script", {
     type: "application/ld+json",
     dangerouslySetInnerHTML: { __html: JSON.stringify(jsonLd) },
-  })
+  });
 }
