@@ -260,7 +260,7 @@ export default function About() {
                           </span>
                         </div>
                         <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-mono">
-                          Praful Gupta Portfolio
+                          Praful Gupta Portfolio (प्रफुल गुप्ता)
                         </span>
                       </div>
                     </div>

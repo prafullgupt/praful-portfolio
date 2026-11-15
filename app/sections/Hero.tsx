@@ -232,6 +232,10 @@ export default function Hero() {
               <span className="inline-block mt-1">
                 <AnimatedNameWave name={personalInfo.name} />
               </span>
+              {/* Semantic indexing for Google & Screen Readers */}
+              <span className="sr-only" lang="hi">
+                प्रफुल गुप्ता (Praful Gupta) - सीनियर मोबाइल और वेब एप्लिकेशन डेवलपर | React Native, Android, Next.js स्पेशलिस्ट
+              </span>
             </h1>
 
             {/* Subtitle & Role Badges */}

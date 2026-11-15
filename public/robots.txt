@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
 
+# Dedicated Googlebot Directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /favicon.svg
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://praful-gupta-portfolio.vercel.app/sitemap.xml
