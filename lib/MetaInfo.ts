@@ -63,6 +63,16 @@ export const MetaInfo = {
     "प्रफुल गुप्ता नोएडा",
     "प्रफुल गुप्ता हर्षित इन्फोसोल्यूशंस",
 
+    // Image Search specific keywords
+    "Praful Gupta photo",
+    "Praful Gupta image",
+    "Praful Gupta picture",
+    "Praful Gupta profile picture",
+    "Praful Gupta DP",
+    "प्रफुल गुप्ता फोटो",
+    "प्रफुल गुप्ता तस्वीर",
+    "प्रफुल गुप्ता इमेज",
+
     // Project & Skill associations
     "KetoBalanced Praful Gupta",
     "FastBetter Praful Gupta",
@@ -108,17 +118,17 @@ export const MetaInfo = {
     type: "profile",
     images: [
       {
-        url: `${siteUrl}/images/profile.png`,
+        url: `${siteUrl}/images/PrafulGupta.png`,
         width: 1200,
         height: 630,
         alt: "Praful Gupta (प्रफुल गुप्ता) - Senior Application & Web Developer, Team Leader",
         type: "image/png",
       },
       {
-        url: `${siteUrl}/images/profile.png`,
+        url: `${siteUrl}/images/PrafulGupta.png`,
         width: 800,
         height: 800,
-        alt: "Praful Gupta - Senior Mobile & Web Developer Profile Photo",
+        alt: "Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer Profile Photo",
         type: "image/png",
       },
     ],
@@ -131,8 +141,8 @@ export const MetaInfo = {
     description: "Senior Application Developer & Team Leader with 8+ years experience building world-class mobile & web applications.",
     images: [
       {
-        url: `${siteUrl}/images/profile.png`,
-        alt: "Praful Gupta - Senior Mobile & Web Developer",
+        url: `${siteUrl}/images/PrafulGupta.png`,
+        alt: "Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer",
       },
     ],
   },
@@ -141,13 +151,13 @@ export const MetaInfo = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/images/profile.png", type: "image/png", sizes: "192x192" },
-      { url: "/images/profile.png", type: "image/png", sizes: "512x512" },
+      { url: "/images/PrafulGupta.png", type: "image/png", sizes: "192x192" },
+      { url: "/images/PrafulGupta.png", type: "image/png", sizes: "512x512" },
     ],
     shortcut: ["/favicon.svg"],
     apple: [
       { url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" },
-      { url: "/images/profile.png", sizes: "180x180", type: "image/png" },
+      { url: "/images/PrafulGupta.png", sizes: "180x180", type: "image/png" },
     ],
   },
   
@@ -178,7 +188,39 @@ export function StructuredData() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      // 1. Person Entity (Google Knowledge Graph)
+      // 1. High-Resolution Profile Image Entity (Google Images #1 Ranking Target)
+      {
+        "@type": "ImageObject",
+        "@id": `${siteUrl}/#profile-photo`,
+        name: "Praful Gupta (प्रफुल गुप्ता)",
+        alternateName: [
+          "Praful Gupta Photo",
+          "प्रफुल गुप्ता फोटो",
+          "Praful Gupta Profile Picture",
+          "Praful Gupta Image",
+          "Praful Gupta DP",
+          "Praful Gupta Senior Developer Photo"
+        ],
+        contentUrl: `${siteUrl}/images/PrafulGupta.png`,
+        url: `${siteUrl}/images/PrafulGupta.png`,
+        thumbnailUrl: `${siteUrl}/images/PrafulGupta.png`,
+        caption: "Praful Gupta (प्रफुल गुप्ता) - Senior Application & Web Developer, Team Leader",
+        description: "Official portrait and profile photo of Praful Gupta (प्रफुल गुप्ता), Senior Application Developer, Team Leader and Mobile/Web Architect.",
+        width: 800,
+        height: 800,
+        encodingFormat: "image/png",
+        creditText: "Praful Gupta",
+        copyrightNotice: "© 2026 Praful Gupta. All Rights Reserved.",
+        representativeOfPage: true,
+        creator: {
+          "@id": `${siteUrl}/#person`
+        },
+        author: {
+          "@id": `${siteUrl}/#person`
+        }
+      },
+
+      // 2. Person Entity (Google Knowledge Graph)
       {
         "@type": "Person",
         "@id": `${siteUrl}/#person`,
@@ -201,12 +243,9 @@ export function StructuredData() {
         },
         url: `${siteUrl}/`,
         image: {
-          "@type": "ImageObject",
-          "url": `${siteUrl}/images/profile.png`,
-          "name": "Praful Gupta",
-          "caption": "Praful Gupta (प्रफुल गुप्ता) - Senior Application & Web Developer, Team Leader",
-          "description": "Official portrait of Praful Gupta, Senior Mobile & Web Application Developer"
+          "@id": `${siteUrl}/#profile-photo`
         },
+        photo: `${siteUrl}/images/PrafulGupta.png`,
         jobTitle: "Team Leader & Senior Application Developer",
         worksFor: {
           "@type": "Organization",
@@ -278,24 +317,22 @@ export function StructuredData() {
           "@id": `${siteUrl}/#person`,
         },
         primaryImageOfPage: {
-          "@type": "ImageObject",
-          "url": `${siteUrl}/images/profile.png`,
-          "name": "Praful Gupta"
+          "@id": `${siteUrl}/#profile-photo`,
         },
+        image: `${siteUrl}/images/PrafulGupta.png`,
         inLanguage: ["en", "hi"],
       },
 
-      // 3. ProfilePage Entity
+      // 4. ProfilePage Entity
       {
         "@type": "ProfilePage",
         "@id": `${siteUrl}/#profilepage`,
         url: `${siteUrl}/`,
         name: "Praful Gupta (प्रफुल गुप्ता) Profile",
         primaryImageOfPage: {
-          "@type": "ImageObject",
-          "url": `${siteUrl}/images/profile.png`,
-          "name": "Praful Gupta"
+          "@id": `${siteUrl}/#profile-photo`,
         },
+        image: `${siteUrl}/images/PrafulGupta.png`,
         mainEntity: {
           "@id": `${siteUrl}/#person`,
         },

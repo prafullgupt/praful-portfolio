@@ -528,9 +528,9 @@ export default function AIChatbot(): React.ReactNode {
               <div className="chat-header-info">
                 <div className="chat-avatar relative overflow-hidden">
                   <Image
-                    src="/images/profile.png"
-                    alt="Praful Gupta - AI Assistant"
-                    title="Praful Gupta"
+                    src="/images/PrafulGupta.png"
+                    alt="Praful Gupta (प्रफुल गुप्ता) - AI Assistant"
+                    title="Praful Gupta (प्रफुल गुप्ता)"
                     fill
                     className="object-cover"
                     sizes="40px"

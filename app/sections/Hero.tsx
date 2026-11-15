@@ -433,20 +433,23 @@ export default function Hero() {
                   {/* Rotating Conic Shimmer Edge */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 animate-[spin_8s_linear_infinite] opacity-75 blur-sm" />
                   
-                  {/* Glassmorphic Core Container */}
-                  <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/80 dark:border-slate-800 shadow-2xl bg-slate-900">
+                  {/* Glassmorphic Core Container with Semantic Figure for Google Image SEO */}
+                  <figure className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/80 dark:border-slate-800 shadow-2xl bg-slate-900">
                     <Image
-                      src="/images/profile.png"
-                      alt="Praful Gupta - Senior Application & Web Developer, Team Leader | React Native, Next.js, Android, iOS Specialist"
-                      title="Praful Gupta - Senior Mobile & Web Developer | Team Leader"
+                      src="/images/PrafulGupta.png"
+                      alt="Praful Gupta (प्रफुल गुप्ता) - Senior Application & Web Developer, Team Leader | React Native, Next.js, Android, iOS Specialist"
+                      title="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer | Team Leader"
                       fill
                       priority
                       className="object-cover scale-105 transition-transform duration-500 hover:scale-110"
                       sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, 288px"
                     />
+                    <figcaption className="sr-only">
+                      Praful Gupta (प्रफुल गुप्ता) - Senior Application & Web Developer, Team Leader
+                    </figcaption>
                     {/* Glass Surface Reflection Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-white/10 pointer-events-none" />
-                  </div>
+                  </figure>
                 </div>
 
                 {/* =============================================================

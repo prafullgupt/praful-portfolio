@@ -17,9 +17,9 @@ export default function Footer() {
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-3">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-blue-400/50 flex-shrink-0 shadow-sm">
               <Image
-                src="/images/profile.png"
-                alt="Praful Gupta - Official Portfolio Footer"
-                title="Praful Gupta - Senior Mobile & Web Developer"
+                src="/images/PrafulGupta.png"
+                alt="Praful Gupta (प्रफुल गुप्ता) - Official Portfolio"
+                title="Praful Gupta (प्रफुल गुप्ता) - Senior Mobile & Web Developer"
                 fill
                 className="object-cover"
                 sizes="32px"

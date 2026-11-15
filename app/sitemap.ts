@@ -11,12 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
+      images: [
+        `${baseUrl}/images/PrafulGupta.png`,
+        `${baseUrl}/images/logo.png`,
+      ],
     },
     {
       url: `${baseUrl}/#about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [
+        `${baseUrl}/images/PrafulGupta.png`,
+      ],
     },
     {
       url: `${baseUrl}/#projects`,

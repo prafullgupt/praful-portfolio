@@ -66,7 +66,8 @@ praful-portfolio/
 │   └── utils.ts
 ├── public/
 │   ├── images/
-│   │   └── profile.png
+│   │   ├── PrafulGupta.png
+│   │   └── logo.png
 │   └── resume/
 │       └── Praful_Gupta_Resume.pdf
 ├── next.config.js
